@@ -18,7 +18,7 @@ export function Header() {
   const { images, author } = siteConfig
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
+    <header className="fixed top-0 z-40 w-full">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <div className="general-sans flex gap-1.5 font-semibold">
           <Image

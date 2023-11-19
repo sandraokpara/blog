@@ -38,3 +38,9 @@ yarn-error.log*
 
 .contentlayer
 .env
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video
