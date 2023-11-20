@@ -14,6 +14,7 @@ export default function HomePage() {
         poster={images[1]}
         className="w-screen h-screen"
       />
+      {/* @ts-expect-error */}
       <Grid />
     </div>
   )
