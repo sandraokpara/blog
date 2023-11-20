@@ -20,8 +20,10 @@ export function Header() {
         isActive ? "bg-black bg-opacity-50" : ""
       }`}
     >
+
       <div className={styles.bar}>
         <Link href="/">{title}®</Link>
+        
         <div
           onClick={() => {
             setIsActive(!isActive)
@@ -45,10 +47,11 @@ export function Header() {
             </motion.p>
           </div>
         </div>
+
         <motion.div
           variants={opacity}
           animate={!isActive ? "open" : "closed"}
-          className={styles.shopContainer}
+          className={`${styles.shopContainer} hidden md:flex`}
         >
           {/* <a
             href="mailto:sandraokpara@gmail.com"
