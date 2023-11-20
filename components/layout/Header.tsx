@@ -3,11 +3,9 @@
 import { useState } from "react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
-
 import { siteConfig } from "@/config/site"
 import { background, opacity } from "@/lib/anim"
 import styles from "@/styles/header.module.scss"
-
 import Nav from "./Nav"
 
 export function Header() {
