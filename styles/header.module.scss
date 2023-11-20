@@ -103,9 +103,16 @@
     .header{
         padding: 20px;
 
-        // .bar{
-        //     font-size: 15px;
-        // }
+        .shop{
+            display: block;
+            cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .header{
+        min-height: 100%;
 
         .shop{
             display: block;
@@ -113,3 +120,4 @@
         }
     }
 }
+

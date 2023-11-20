@@ -172,7 +172,7 @@ const Nav: React.FC = () => {
           <Footer />
         </div>
         <NavImage
-          src={categories[selectedLink.index].href}
+          src={categories[selectedLink.index].src}
           isActive={selectedLink.isActive}
         />
       </div>
