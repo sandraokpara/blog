@@ -14,7 +14,7 @@ export default function HomePage() {
         poster={images[1]}
         className="w-screen h-screen"
       />
-      {/* <Grid /> */}
+      <Grid />
     </div>
   )
 }
