@@ -1,7 +1,7 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
-import { bebasNeue, generalSans, inter } from "@/lib/fonts"
+import { inter, melodrama } from "@/lib/fonts"
 import Footer from "@/components/layout/Footer"
 import { Header } from "@/components/layout/Header"
 import Providers from "@/components/layout/Providers"
@@ -46,13 +46,13 @@ export const generateMetadata = async ({}): Promise<Metadata> => {
 }
 
 export const viewport = {
-   themeColor: [
-      { media: "(prefers-color-scheme: light)", color: "white" },
-      { media: "(prefers-color-scheme: dark)", color: "black" },
-    ],
-  width: 'device-width',
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  width: "device-width",
   initialScale: 1,
-};
+}
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -63,8 +63,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <link rel="stylesheet" href={bebasNeue.variable} />
-          <link rel="stylesheet" href={generalSans.variable} />
+          <link rel="stylesheet" href={melodrama.variable} />
         </head>
         <body className={inter.className}>
           <Providers>

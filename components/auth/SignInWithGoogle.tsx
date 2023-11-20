@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react"
 
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
-import { Icons } from "@/components/Icons"
+import { Icons } from "@/components/ui/Icons"
 
 interface SignInWithGoogleProps extends React.HTMLAttributes<HTMLDivElement> {}
 

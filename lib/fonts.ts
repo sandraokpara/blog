@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google"
+import { Antic_Didone, Inter } from "next/font/google"
 
 const variable = (variable: string) => {
   return `https://api.fontshare.com/v2/css?f[]=${variable}@400&display=swap`
@@ -9,12 +9,9 @@ export const inter = Inter({
   variable: "--font-mono",
 })
 
-export const generalSans = {
-  subsets: ["latin"],
-  variable: variable(`general-sans`),
-}
+export const anticDidone = Antic_Didone({ subsets: ["latin"], weight: "400" })
 
-export const bebasNeue = {
+export const melodrama = {
   subsets: ["latin"],
-  variable: variable(`bebas-neue`),
+  variable: variable(`melodrama`),
 }

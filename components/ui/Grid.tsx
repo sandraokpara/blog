@@ -1,9 +1,9 @@
 import { getPosts } from "@/lib/requests"
 import Link from "next/link"
 
-interface HeroProps { }
+interface GridProps { }
 
-export const Hero = async ({ }: HeroProps) => {
+export const Grid = async ({ }: GridProps) => {
   const posts = await getPosts()
 
   return (

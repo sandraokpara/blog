@@ -4,7 +4,7 @@ import React, { FC } from "react"
 
 import { siteConfig } from "@/config/site"
 
-import { Icons } from "../Icons"
+import { Icons } from "../ui/Icons"
 import SignInWithGoogle from "./SignInWithGoogle"
 
 interface SignInFireWallProps {}

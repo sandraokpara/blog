@@ -13,10 +13,10 @@ const Footer: FC<FooterProps> = () => {
   const { year, wish } = useDate()
   return (
     <div
-      className={`bebas-neue flex h-10 items-center justify-between px-6 text-center text-sm font-normal md:text-base`}
+      className={`flex h-10 items-center justify-between px-6 text-center text-xs font-normal md:sm`}
     >
-      <p>&#169; {+year + ` ${title} • ALL RIGHTS RESERVED`}</p>
-      <p>{wish}</p>
+      <p>&#169; {+year + ` ${title} • All rights reserved`}</p>
+      <p className="hidden md:flex">{wish}</p>
     </div>
   )
 }

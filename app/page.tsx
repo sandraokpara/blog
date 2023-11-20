@@ -1,13 +1,20 @@
-import { Hero } from "@/components/Hero"
 import BackgroundVideo from "@/components/ui/Video"
+import { Grid } from "@/components/ui/Grid"
+import { siteConfig } from "@/config/site"
+
+const {images, videos} = siteConfig
 
 export const dynamic = "force-dynamic"
 
 export default function HomePage() {
   return (
     <div className="w-full">
-      <BackgroundVideo src="https://sandraokpara.sirv.com/blog/video" poster="https://sandraokpara.sirv.com/blog/image/green.jpg" className="w-screen h-screen" />
-      <Hero />
+      <BackgroundVideo
+        src={videos[0]}
+        poster={images[1]}
+        className="w-screen h-screen"
+      />
+      {/* <Grid /> */}
     </div>
   )
 }
