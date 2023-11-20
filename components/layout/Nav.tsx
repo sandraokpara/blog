@@ -95,17 +95,18 @@ const Footer: React.FC = () => {
           <span>Made by:</span>Joshua Edo
         </motion.li>
       </ul>
-      <ul>
+      {/* <ul>
         <motion.li
           custom={[0.3, 0]}
           variants={translate}
           initial="initial"
           animate="enter"
           exit="exit"
+          className="hidden md:flex"
         >
           <span>Typography:</span> Google Fonts
         </motion.li>
-      </ul>
+      </ul> */}
       <ul>
         <motion.li
           custom={[0.3, 0]}

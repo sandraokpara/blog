@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   title: "Sandra Okpara",
   description:
-    "Sandra Okpara's Blog",
+    "Freelance Writer and Blogger",
   url: "https://sandraokpara.com",
   creator: "Joshua Edo",
   siteName: "Who is Sandra Okpara?",
