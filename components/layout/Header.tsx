@@ -56,7 +56,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="flex"
           > */}
-          Let's talk
+          Let&apos;s talk
           {/* </a> */}
         </motion.div>
       </div>
