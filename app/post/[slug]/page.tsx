@@ -1,5 +1,4 @@
 import { getPosts } from "@/lib/requests";
-import { SingleBlogPostType } from "@/types/validators";
 
 interface PostPageProps {
   params: {

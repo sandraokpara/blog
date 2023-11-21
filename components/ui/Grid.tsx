@@ -1,20 +1,34 @@
-import { getPosts } from "@/lib/requests"
 import Link from "next/link"
 
-interface GridProps { }
+import { getCategoryPosts, getPosts } from "@/lib/requests"
 
-export const Grid = async ({ }: GridProps) => {
-  const posts = await getPosts()
+interface GridProps {
+  isCategory?: boolean
+  categoryId?: string
+}
 
-  if (!Array.isArray(posts)) {
-    return null;
+export const Grid = async ({ isCategory, categoryId }: GridProps) => {
+  let posts = []
+  
+  if (isCategory) {
+    posts = await getCategoryPosts(categoryId)
+  } else {
+    posts = (await getPosts()) as any[]
   }
 
   return (
     <section className="">
       {posts &&
-        posts.flatMap(post => <Link key={post.id} href={`/post/${post.slug}`}><p className="text-sm">{post?.title}</p></Link>)
-      }
+        posts.flatMap((post) => (
+          <div key={post.id}>
+            <Link href={`/post/${post.slug}`}>
+              <p className="text-sm">Name:{post?.title}</p>
+            </Link>
+            <Link href={`/blog/category/${post.category.id}`}>
+              <p className="text-sm">Category:{post?.category.name}</p>
+            </Link>
+          </div>
+        ))}
     </section>
   )
 }

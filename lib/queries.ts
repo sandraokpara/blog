@@ -1,24 +1,68 @@
-export const queryAllPosts = `{
-  posts(last: 100, orderBy: date_DESC) {
+// /home
+export const queryFeaturedPosts = `query FeaturedPostsQuery {
+  posts(where: {isFeatured: true} ) {
+    id
+    slug
+    title
+    date
+    excerpt
+    coverImage {
+      url
       id
-      excerpt
-      slug
-      title
-      date
-      coverImage {
-        url
-        id
-      }
-       category {
+    }
+    category {
       id
       name
     }
-    isFeatured
   }
 }`
 
-export const querySinglePost = `
-  query SinglePost($slug: String!) {
+// /blog
+export const queryAllPosts = `query AllPostsQuery {
+  posts(last: 100, orderBy: date_DESC) {
+    id
+    slug
+    title
+    author {
+      name
+    }
+    date
+    excerpt
+    coverImage {
+      url
+      id
+    }
+    category {
+      id
+      name
+    }
+  }
+}`
+
+// /blog/category/[categoryId]
+export const queryCategoryPosts = `query CategoryPostsQuery($categoryId: ID) {
+  posts(last: 100, orderBy: date_DESC, where: {category: {id: $categoryId}} ) {
+    id
+    slug
+    title
+    author {
+      name
+    }
+    date
+    excerpt
+    coverImage {
+      url
+      id
+    }
+    category {
+      id
+      name
+    }
+  }
+}`
+
+// /blog/post/[slug]
+export const querySinglePost = `query SinglePost($slug: String!) {
     post(where: { slug: $slug }) {
       id
       slug
@@ -39,10 +83,10 @@ export const querySinglePost = `
         url
         id
       }
-       category {
-      id
-      name
+      category {
+        id
+        name
+      }
+      isFeatured
     }
-    }
-  }
-`;
+  }`;

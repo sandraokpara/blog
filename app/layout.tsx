@@ -1,7 +1,7 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
-import { inter, melodrama } from "@/lib/fonts"
+import { GeistSans} from "@/lib/fonts"
 import Footer from "@/components/layout/Footer"
 import { Header } from "@/components/layout/Header"
 import Providers from "@/components/layout/Providers"
@@ -62,10 +62,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head>
-          <link rel="stylesheet" href={melodrama.variable} />
-        </head>
-        <body className={inter.className}>
+        <head />
+        <body className={GeistSans.className}>
           <Providers>
             <div className="relative flex min-h-[100svh] flex-col bg-background">
               <Header />

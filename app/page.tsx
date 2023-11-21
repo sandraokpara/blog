@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site"
-import { anticDidone } from "@/lib/fonts"
-import { Grid } from "@/components/ui/Grid"
-import BackgroundVideo from "@/components/ui/Video"
+import RotatingText from "@/components/ui/RotatingText"
+import Video, { BackgroundVideo } from "@/components/ui/Video"
+import FeaturedWork from "@/components/ui/FeaturedWork"
 
 const { images, videos, title, description } = siteConfig
 
@@ -10,30 +10,32 @@ export const dynamic = "force-dynamic"
 export default function HomePage() {
   return (
     <div className="w-full">
-
-      <section className="h-screen w-screen relative text-[#ddeeec]">
+      {/* Hero */}
+      {/* <section className="h-screen w-screen relative text-[#ddeeec]">
         <BackgroundVideo
           src={videos[0]}
           poster={images[1]}
           className="h-full w-full absolute"
         />
-        <div className="absolute z-[2] bottom-10 left-5 font-semibold">
-          <div className={anticDidone.className}>
-          <h2 className="text-6xl md:text-7xl drop-shadow-lg">{title}®</h2>
-          <h2 className="text-4xl md:text-5xl mt-2 drop-shadow-lg">{description}</h2>
+      </section> */}
+
+      {/* Anti Hero */}
+      <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+        <div className="col-span-2 lg:col-span-1">
+          <div></div>
+          <div>
+            <RotatingText />
           </div>
         </div>
-      </section>
-
-      <section className="min-h-screen">
-
+        <div className="col-span-2 lg:col-span-1">
+          <Video src={videos[0]} poster={images[0]} className="" />
+        </div>
       </section>
 
       <section className="min-h-screen flex justify-center items-center">
         {/* @ts-expect-error */}
-        <Grid />
+        <FeaturedWork />
       </section>
-
     </div>
   )
 }
