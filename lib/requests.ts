@@ -1,11 +1,18 @@
 import {
   AllPostsType,
+  CategoriesType,
   CategoryPostsType,
   FeaturedPostsType,
   SinglePostType,
 } from "@/types/validators"
 
-import { queryAllPosts, queryCategoryPosts, queryFeaturedPosts, querySinglePost } from "./queries"
+import {
+  queryAllPosts,
+  queryCategories,
+  queryCategoryPosts,
+  queryFeaturedPosts,
+  querySinglePost,
+} from "./queries"
 
 async function fetchData(query: string, variables?: Record<string, any>) {
   const hygraphEndpoint = process.env.HYGRAPH_ENDPOINT
@@ -55,9 +62,16 @@ export async function getCategoryPosts(categoryId?: string) {
   const result = await fetchData(query, variables)
 
   if (categoryId) {
-    // console.log(result)
     return result?.data?.posts as CategoryPostsType[]
   } else {
     return result?.data?.posts as AllPostsType[]
   }
+}
+
+export async function getCategories() {
+  const query = queryCategories
+  const variables = {}
+
+  const result = await fetchData(query, variables)
+  return result?.data?.categories as CategoriesType[]
 }

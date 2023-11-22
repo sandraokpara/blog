@@ -5,21 +5,20 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
+import { CategoriesType } from "@/types/validators"
 import { blur, height, opacity, translate } from "@/lib/anim"
-import { categories } from "@/lib/cat"
 import styles from "@/styles/nav.module.scss"
 
+interface NavProps {
+  categories: CategoriesType[]
+}
+
 interface BodyProps {
-  categories: LinkProps[]
+  categories: CategoriesType[]
   selectedLink: { isActive: boolean; index: number }
   setSelectedLink: React.Dispatch<
     React.SetStateAction<{ isActive: boolean; index: number }>
   >
-}
-
-interface LinkProps {
-  title: string
-  href: string
 }
 
 interface NavImageProps {
@@ -53,10 +52,13 @@ const Body: React.FC<BodyProps> = ({
 
   return (
     <div className={styles.body}>
-      {categories.map((link, index) => {
-        const { title, href } = link
+      {/* <Link className="" href={`/blog`}>
+        <motion.p variants={blur}>{getChars("All")}</motion.p>
+      </Link> */}
+      {categories?.map((link, index) => {
+        const { name, id } = link
         return (
-          <Link key={`l_${index}`} href={`/category/${href}`}>
+          <Link key={`l_${index}`} href={`/blog/category/${id}`}>
             <motion.p
               onMouseOver={() => {
                 setSelectedLink({ isActive: true, index })
@@ -71,7 +73,7 @@ const Body: React.FC<BodyProps> = ({
                   : "closed"
               }
             >
-              {getChars(title)}
+              {getChars(name)}
             </motion.p>
           </Link>
         )
@@ -87,15 +89,11 @@ const NavImage: React.FC<NavImageProps> = ({ src, isActive }) => (
     animate={isActive ? "open" : "closed"}
     className={styles.imageContainer}
   >
-    <Image
-      src={`https://sandraokpara.sirv.com/blog/image/${src}`}
-      fill
-      alt={src}
-    />
+    <Image src={src} fill alt={"nav image"} />
   </motion.div>
 )
 
-const Nav: React.FC = () => {
+const Nav = ({ categories }: NavProps) => {
   const [selectedLink, setSelectedLink] = useState({
     isActive: false,
     index: 0,
@@ -118,7 +116,7 @@ const Nav: React.FC = () => {
           />
         </div>
         <NavImage
-          src={categories[selectedLink.index].src}
+          src={categories[selectedLink.index]?.picture?.url}
           isActive={selectedLink.isActive}
         />
       </div>

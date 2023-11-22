@@ -3,7 +3,7 @@ import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 import { GeistSans} from "@/lib/fonts"
 import Footer from "@/components/layout/Footer"
-import { Header } from "@/components/layout/Header"
+import  Header  from "@/components/layout/Header"
 import Providers from "@/components/layout/Providers"
 import { Toaster } from "@/components/layout/Toaster"
 
@@ -66,6 +66,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body className={GeistSans.className}>
           <Providers>
             <div className="relative flex min-h-[100svh] flex-col bg-background">
+              {/* @ts-expect-error */}
               <Header />
               <div className="flex-1">{children}</div>
               <Footer />

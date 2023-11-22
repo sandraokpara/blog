@@ -61,6 +61,18 @@ export const queryCategoryPosts = `query CategoryPostsQuery($categoryId: ID) {
   }
 }`
 
+export const queryCategories = `query CategoriesQuery {
+  categories(first: 5) {
+    id
+    name
+    picture {
+      id
+      url
+      altText
+    }
+  }
+}`
+
 // /blog/post/[slug]
 export const querySinglePost = `query SinglePost($slug: String!) {
     post(where: { slug: $slug }) {
@@ -89,4 +101,4 @@ export const querySinglePost = `query SinglePost($slug: String!) {
       }
       isFeatured
     }
-  }`;
+  }`

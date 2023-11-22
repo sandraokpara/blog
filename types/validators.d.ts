@@ -54,6 +54,16 @@ export const CategoryPostsValidator = z.object({
       }),
 });
 
+export const CategoriesValidator = z.object({
+  id: z.string(),
+  name: z.string(),
+  picture: z.object({
+    id: z.string(),
+    url: z.string(),
+    altText: z.string(),
+  })
+})
+
 export const SinglePostValidator = z.object({
     id: z.string(),
     slug: z.string(),
@@ -84,5 +94,6 @@ export const SinglePostValidator = z.object({
 export type FeaturedPostsType = z.infer<typeof FeaturedPostsValidator>;
 export type AllPostsType = z.infer<typeof AllPostsValidator>;
 export type CategoryPostsType = z.infer<typeof CategoryPostsValidator>;
+export type CategoriesType = z.infer<typeof CategoriesValidator>;
 export type SinglePostType = z.infer<typeof SinglePostValidator>;
 

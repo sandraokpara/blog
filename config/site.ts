@@ -14,6 +14,8 @@ export const siteConfig = {
   images: [
     "https://sandraokpara.sirv.com/blog/image/purple.jpg",
     "https://sandraokpara.sirv.com/blog/image/green.jpg",
+    "https://sandraokpara.sirv.com/blog/image/red.jpg",
+    "https://sandraokpara.sirv.com/blog/image/poster.png",
   ],
   videos: ["https://sandraokpara.sirv.com/blog/video"],
 }

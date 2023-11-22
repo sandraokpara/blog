@@ -28,9 +28,11 @@
     }
 
     .shopContainer {
-      gap: 30px;
       position: absolute;
       right: 0;
+      a {
+        position: relative;
+      }
     }
 
     .el {
@@ -106,7 +108,7 @@
   .header {
     min-height: 100%;
     .bar {
-        justify-content: end;
-      }
+      justify-content: end;
+    }
   }
 }
