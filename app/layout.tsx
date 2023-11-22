@@ -68,7 +68,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="relative flex min-h-[100svh] flex-col bg-background">
               {/* @ts-expect-error */}
               <Header />
-              <div className="flex-1">{children}</div>
+              <div className="">{children}</div>
               <Footer />
               <Toaster />
             </div>

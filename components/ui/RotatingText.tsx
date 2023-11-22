@@ -28,12 +28,12 @@ function Text({ primary, secondary, className }: TextProps) {
 
 export default function RotatingText() {
   return (
-    <div className={styles.container}>
       <div className={styles.body}>
         <Text primary={"01 Blog"} secondary={"01 Blog"} />
-        <Text className="align-end object-end justify-end" primary={"02 Podcast"} secondary={"02 Podcast"} />
+        <div className="flex items-center justify-end">
+        <Text className="" primary={"02 Podcast"} secondary={"02 Podcast"} />
+        </div>
         <Text primary={"03 Gallery"} secondary={"03 Gallery"} />
       </div>
-    </div>
   )
 }
