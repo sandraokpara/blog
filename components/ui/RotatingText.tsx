@@ -7,14 +7,15 @@ import styles from "@/styles/rotating-text.module.css"
 interface TextProps {
   primary: string
   secondary: string
+  className?: string
 }
 
-function Text({ primary, secondary }: TextProps) {
+function Text({ primary, secondary, className }: TextProps) {
   const text1 = useRef(null)
   const text2 = useRef(null)
 
   return (
-    <div className={styles.textContainer}>
+    <div className={`${styles.textContainer} ${className}`}>
       <p className={styles.primary} ref={text1}>
         {primary}
       </p>
@@ -29,9 +30,9 @@ export default function RotatingText() {
   return (
     <div className={styles.container}>
       <div className={styles.body}>
-        <Text primary={"Turning"} secondary={"Turning"} />
-        <Text primary={"Space"} secondary={"Space"} />
-        <Text primary={"Into"} secondary={"Into"} />
+        <Text primary={"01 Blog"} secondary={"01 Blog"} />
+        <Text className="align-end object-end justify-end" primary={"02 Podcast"} secondary={"02 Podcast"} />
+        <Text primary={"03 Gallery"} secondary={"03 Gallery"} />
       </div>
     </div>
   )

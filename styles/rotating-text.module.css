@@ -1,6 +1,4 @@
 .container {
-  height: 100vh;
-  width: 100vw;
   display: flex;
 }
 .body {
@@ -8,8 +6,6 @@
   flex-direction: column;
   position: absolute;
   transform-style: preserve-3d;
-  margin-top: 25px;
-  margin-left: 25px;
 }
 .textContainer {
   position: relative;
@@ -19,13 +15,12 @@
 }
 
 .textContainer p {
-  font-size: 8vw;
-  font-weight: 500;
+  font-size: 3.6rem;
+  font-weight: 420;
   text-transform: uppercase;
   margin: 0px;
   transition: all 0.6s;
-  color: white;
-  line-height: 8vw;
+  line-height: 1.5;
 }
 
 .textContainer .secondary {
@@ -33,7 +28,6 @@
   transform-origin: bottom center;
   position: absolute;
   top: 0;
-  color: black;
   opacity: 0;
 }
 
