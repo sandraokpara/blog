@@ -1,9 +1,10 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+
 import { siteConfig } from "@/config/site"
-import { GeistSans} from "@/lib/fonts"
+import { GeistSans } from "@/lib/fonts"
 import Footer from "@/components/layout/Footer"
-import  Header  from "@/components/layout/Header"
+import Header from "@/components/layout/Header"
 import Providers from "@/components/layout/Providers"
 import { Toaster } from "@/components/layout/Toaster"
 
@@ -68,7 +69,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="relative flex min-h-[100svh] flex-col bg-background">
               {/* @ts-expect-error */}
               <Header />
-              <div className="">{children}</div>
+              <div className="p-6 md:px-12 lg:px-32">{children}</div>
               <Footer />
               <Toaster />
             </div>

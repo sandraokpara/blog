@@ -30,7 +30,7 @@ export default function RotatingText() {
   return (
       <div className={styles.body}>
         <Text primary={"01 Blog"} secondary={"01 Blog"} />
-        <div className="flex items-center justify-end">
+        <div className="flex items-center lg:justify-end">
         <Text className="" primary={"02 Podcast"} secondary={"02 Podcast"} />
         </div>
         <Text primary={"03 Gallery"} secondary={"03 Gallery"} />
