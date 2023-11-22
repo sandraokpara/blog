@@ -1,5 +1,5 @@
 import { FC } from "react"
-import Video from "next-video"
+// import Video from "next-video"
 
 interface VideoProps {
   src: string
@@ -54,21 +54,21 @@ const HTMLBackgroundVideo: FC<VideoProps> = ({ src, poster, className }) => {
     </div>
   )
 }
-const NextVideo: FC<VideoProps> = ({ src, poster, className }) => {
-  return (
-    <div className="w-full h-full">
-      <Video
-        data-nosnippet
-        loop
-        controls={false}
-        src={`${src}/sm.mp4`}
-        muted
-        autoPlay
-        className={`${className} object-cover object-center`}
-        poster={poster?.md}
-      />
-    </div>
-  )
-}
+// const NextVideo: FC<VideoProps> = ({ src, poster, className }) => {
+//   return (
+//     <div className="w-full h-full">
+//       <Video
+//         data-nosnippet
+//         loop
+//         controls={false}
+//         src={`${src}/sm.mp4`}
+//         muted
+//         autoPlay
+//         className={`${className} object-cover object-center`}
+//         poster={poster?.md}
+//       />
+//     </div>
+//   )
+// }
 
-export { HTMLVideo, HTMLBackgroundVideo, NextVideo }
+export { HTMLVideo, HTMLBackgroundVideo }
