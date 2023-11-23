@@ -43,7 +43,7 @@ const Footer: FC<FooterProps> = () => {
         </div>
       </div>
       <div
-        className={`flex h-10 items-center justify-between text-center text-xs font-normal md:sm`}
+        className={`flex h-10 items-center justify-between text-center text-xs font-normal`}
       >
         <p>&#169; {+year + ` ${title} • All rights reserved`}</p>
         <p className="">
