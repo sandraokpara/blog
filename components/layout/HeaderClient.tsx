@@ -74,6 +74,7 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
               <motion.p
                 variants={opacity}
                 animate={isActive ? "open" : "closed"}
+                className={` ${isActive ? "text-white" : ""}`}
               >
                 Close
               </motion.p>
