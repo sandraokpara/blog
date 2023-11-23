@@ -8,6 +8,7 @@ import { truncateString } from "@/lib/utils"
 interface GridProps {
   isCategory?: boolean
   categoryId?: string
+  categoryName?: string
 }
 
 interface GridSection {
@@ -25,6 +26,50 @@ const getClassName = (index: number): string => {
   ]
 
   return classMappings[index] || ""
+}
+
+export const Grid = async ({
+  isCategory,
+  categoryId,
+  categoryName,
+}: GridProps) => {
+  const posts = isCategory
+    ? await getCategoryPosts(categoryId)
+    : ((await getPosts()) as AllPostsType[])
+  const chunkedPosts: AllPostsType[][] = posts.reduce<AllPostsType[][]>(
+    (chunks, post, index) => {
+      if (index % 6 === 0) {
+        chunks.push([post])
+      } else {
+        chunks[chunks.length - 1].push(post)
+      }
+      return chunks
+    },
+    []
+  )
+
+  return (
+    <section className="mt-12 lg:mt-0">
+      {!isCategory ? (
+        <h1 className="text-xs md:text-sm uppercase font-medium text-center lg:text-start pb-4">
+          All Posts
+        </h1>
+      ) : (
+        <h1 className="text-3xl md:text-4xl lg:6xl uppercase font-medium text-center lg:text-end pb-4 pt-6 md:pt-12 lg:pt-20">
+          {posts[0]?.category?.name}
+        </h1>
+      )}
+      <div className="border border-foreground dark:border-[#333333] p-4">
+        {chunkedPosts.map((chunk, index) => (
+          <GridSection
+            key={index}
+            postsChunk={chunk}
+            isLastSection={index === chunkedPosts.length - 1}
+          />
+        ))}
+      </div>
+    </section>
+  )
 }
 
 const GridSection = ({
@@ -72,34 +117,5 @@ const GridSection = ({
           )
         })}
     </div>
-  )
-}
-
-export const Grid = async ({ isCategory, categoryId }: GridProps) => {
-  const posts = isCategory
-    ? await getCategoryPosts(categoryId)
-    : ((await getPosts()) as AllPostsType[])
-  const chunkedPosts: AllPostsType[][] = posts.reduce<AllPostsType[][]>(
-    (chunks, post, index) => {
-      if (index % 6 === 0) {
-        chunks.push([post])
-      } else {
-        chunks[chunks.length - 1].push(post)
-      }
-      return chunks
-    },
-    []
-  )
-
-  return (
-    <section className="mt-12 lg:mt-0 border border-foreground dark:border-[#333333] p-4">
-      {chunkedPosts.map((chunk, index) => (
-        <GridSection
-          key={index}
-          postsChunk={chunk}
-          isLastSection={index === chunkedPosts.length - 1}
-        />
-      ))}
-    </section>
   )
 }

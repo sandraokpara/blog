@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic"
 
 export default function CategoryPage({ params }: CategoryPageProps) {
   return (
-    <section className="">
+    <section>
       {/* @ts-expect-error */}
       <Grid categoryId={params.categoryId} isCategory={true} />
     </section>

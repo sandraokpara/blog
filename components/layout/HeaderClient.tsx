@@ -22,6 +22,8 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
   const pathname = usePathname()
   const isBlog = pathname === "/blog"
   const [show, handleShow] = useState(false)
+  const headerBG =
+    show && !isActive ? "dark:bg-[#00000080] bg-[#f7f5f5] bg-opacity-80" : ""
 
   const transitionNavBar = () => {
     if (window.scrollY > 100) {
@@ -35,9 +37,6 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
     window.addEventListener("scroll", transitionNavBar)
     return () => window.removeEventListener("scroll", transitionNavBar)
   }, [])
-
-  const headerBG =
-    show && !isActive ? "dark:bg-[#00000080] bg-[#f7f5f5] bg-opacity-80" : ""
 
   return (
     <header
@@ -85,9 +84,22 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
         ) : (
           <div className={styles.el}>
             <div className={styles.label}>
-              <motion.p>
-                <Link href="/blog">Blog</Link>
-              </motion.p>
+              {isActive ? (
+                <motion.p
+                  onClick={() => {
+                    setIsActive(!isActive)
+                  }}
+                  variants={opacity}
+                  animate={isActive ? "open" : "closed"}
+                  className={` ${isActive ? "text-white" : ""}`}
+                >
+                  Close
+                </motion.p>
+              ) : (
+                <motion.p>
+                  <Link href="/blog">Blog</Link>
+                </motion.p>
+              )}
             </div>
           </div>
         )}

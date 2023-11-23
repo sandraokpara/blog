@@ -16,7 +16,7 @@ interface FeaturedCarouselProps {
 const FeaturedCarousel = ({ posts }: FeaturedCarouselProps) => {
   return (
     <section className="my-1 md:my-4 lg:my-16 min-h-[50svh] space-y-4">
-      <h1 className="text-xs md:text-sm uppercase font-medium">
+      <h1 className="text-xs md:text-sm uppercase font-medium text-center lg:text-start">
         Featured Posts
       </h1>
       <Carousel
