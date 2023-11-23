@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
@@ -21,13 +21,30 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
   const { title } = siteConfig
   const pathname = usePathname()
   const isBlog = pathname?.startsWith("/blog")
+  const [show, handleShow] = useState(false)
+
+  const transitionNavBar = () => {
+    if (window.scrollY > 100) {
+      handleShow(true)
+    } else {
+      handleShow(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", transitionNavBar)
+    return () => window.removeEventListener("scroll", transitionNavBar)
+  }, [])
+
+  const headerBG =
+    show && !isActive ? "dark:bg-[#00000080] bg-[#f7f5f5] bg-opacity-80" : ""
 
   return (
     <header
       className={`${
         styles.header
-      } text-base lg:text-lg tracking-tight absolute lg:fixed top-0 w-full ${
-        isActive ? "bg-black bg-opacity-50 z-40" : ""
+      } ${headerBG} text-base lg:text-lg tracking-tight py-5 fixed top-0 w-full z-40 ${
+        isActive ? "bg-black bg-opacity-50" : ""
       }`}
     >
       <div className={styles.bar}>
