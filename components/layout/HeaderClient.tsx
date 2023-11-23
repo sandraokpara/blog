@@ -20,7 +20,7 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
   const [isActive, setIsActive] = useState(false)
   const { title } = siteConfig
   const pathname = usePathname()
-  const isBlog = pathname?.startsWith("/blog")
+  const isBlog = pathname === "/blog"
   const [show, handleShow] = useState(false)
 
   const transitionNavBar = () => {
@@ -43,16 +43,18 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
     <header
       className={`${
         styles.header
-      } ${headerBG} text-base lg:text-lg tracking-tight py-5 fixed top-0 w-full z-40 ${
+      } ${headerBG} text-base lg:text-lg tracking-tight placeholder:fixed top-0 w-full z-40 ${
         isActive ? "bg-black bg-opacity-50" : ""
-      }`}
+      }
+  
+      `}
     >
       <div className={styles.bar}>
         {/* Title */}
         <Link href="/">{title}®</Link>
 
         {/* Katigoris */}
-        {isBlog && (
+        {isBlog ? (
           <div
             onClick={() => {
               setIsActive(!isActive)
@@ -77,6 +79,14 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
                 className={` ${isActive ? "text-white" : ""}`}
               >
                 Close
+              </motion.p>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.el}>
+            <div className={styles.label}>
+              <motion.p>
+                <Link href="/blog">Blog</Link>
               </motion.p>
             </div>
           </div>
