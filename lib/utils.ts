@@ -24,3 +24,12 @@ export const splitTitle = (input: string): SplitTitle => {
   return { title1, title2 };
 };
 
+export function truncateString(text: string, maxLength: number): string {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return text.slice(0, maxLength) + '...';
+  }
+}
+
+

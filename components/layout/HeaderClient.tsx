@@ -26,8 +26,8 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
     <header
       className={`${
         styles.header
-      } text-base lg:text-lg tracking-tight absolute lg:fixed top-0 z-40 w-full ${
-        isActive ? "bg-black bg-opacity-50" : ""
+      } text-base lg:text-lg tracking-tight absolute lg:fixed top-0 w-full ${
+        isActive ? "bg-black bg-opacity-50 z-40" : ""
       }`}
     >
       <div className={styles.bar}>

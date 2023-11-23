@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 
 import { FeaturedPostsType } from "@/types/validators"
-import { splitTitle } from "@/lib/utils"
+import { splitTitle, truncateString } from "@/lib/utils"
 import styles from "@/styles/featured-work.module.css"
 
 const anim = {
@@ -26,7 +26,8 @@ interface WorkProps {
 
 const Work: React.FC<WorkProps> = ({ post }) => {
   const [isActive, setIsActive] = useState(false)
-  const { title1, title2 } = splitTitle(post.title)
+  const title = post.title
+  const { title1, title2 } = splitTitle(truncateString(title, 25))
 
   return (
     <Link key={post.id} href={`/post/${post.slug}`}>

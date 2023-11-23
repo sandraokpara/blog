@@ -38,7 +38,7 @@ const Nav = ({ categories }: NavProps) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className={`${styles.nav}`}
+      className={`${styles.nav} text-white`}
     >
       <div className={styles.wrapper}>
         <div className={styles.container}>

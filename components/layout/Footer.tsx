@@ -46,7 +46,7 @@ const Footer: FC<FooterProps> = () => {
         className={`flex h-10 items-center justify-between text-center text-xs font-normal`}
       >
         <p>&#169; {+year + ` ${title} • All rights reserved`}</p>
-        <p className="">
+        <p className="i-no-go-hide-you-ke">
           {stanqUser ? (
             <UserAuthNav gUser={stanqUser} />
           ) : (

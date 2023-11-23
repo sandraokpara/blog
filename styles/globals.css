@@ -94,6 +94,15 @@ section {
   }
 }
 
+@media only screen and (max-width: 340px) {
+  section {
+    min-height: 55svh;
+  }
+  .i-no-go-hide-you-ke {
+    display: none;
+  }
+}
+
 .melodrama {
   font-family: "Melodrama", sans-serif;
 }
