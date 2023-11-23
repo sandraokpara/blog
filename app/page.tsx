@@ -34,7 +34,7 @@ const Hero = () => (
 )
 
 const AntiHero = () => (
-  <section className="min-h-[100svh] grid grid-cols-1 lg:grid-cols-2 space-y-32 lg:space-y-0">
+  <section className="grid grid-cols-1 lg:grid-cols-2 space-y-32 lg:space-y-0">
     <div className="col-span-2 lg:col-span-1 flex flex-col items-end gap-8 space-y-16 lg:space-y-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center">
         <div>

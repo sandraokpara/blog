@@ -1,19 +1,16 @@
-import React, { FC } from "react"
-
 import FeaturedCarousel from "@/components/ui/FeaturedCarousel"
 import { Grid } from "@/components/ui/Grid"
+import { getFeaturedPosts } from "@/lib/requests"
 
 
 export const dynamic = "force-dynamic"
 
-interface BlogPageProps {}
+const BlogPage = async ({}) => {
+  const featuredPosts = await getFeaturedPosts()
 
-const BlogPage: FC<BlogPageProps> = ({}) => {
   return (
     <div>
-      {/* @ts-expect-error */}
-      <FeaturedCarousel />
-      <div className="text-5xl">BLOG</div>
+      <FeaturedCarousel posts={featuredPosts} />
       {/* @ts-expect-error */}
       <Grid />
     </div>

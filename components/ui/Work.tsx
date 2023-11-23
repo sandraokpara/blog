@@ -37,7 +37,7 @@ const Work: React.FC<WorkProps> = ({ post }) => {
         onMouseLeave={() => {
           setIsActive(false)
         }}
-        className={styles.project}
+        className={`${styles.project} border-t border-foreground dark:border-[#333333]`}
       >
         <p>{title1}</p>
         <motion.div

@@ -1,39 +1,46 @@
-"use client"
-
-import { useRef } from "react"
+import Link from "next/link"
 
 import styles from "@/styles/rotating-text.module.css"
 
 interface TextProps {
   primary: string
-  secondary: string
-  className?: string
+  href: string
+  index?: number
 }
 
-function Text({ primary, secondary, className }: TextProps) {
-  const text1 = useRef(null)
-  const text2 = useRef(null)
-
+function Text({ primary, href, index }: TextProps) {
   return (
-    <div className={`${styles.textContainer} ${className}`}>
-      <p className={styles.primary} ref={text1}>
-        {primary}
-      </p>
-      <p className={styles.secondary} ref={text2}>
-        {secondary}
-      </p>
+    <div className="flex">
+      <span className="pt-3 font-medium">0{index}</span>
+      <Link
+        target="_blank"
+        rel="noopener noreferrer"
+        href={href}
+        className={`${styles.textContainer}`}
+      >
+        <p className={styles.primary}>{primary}</p>
+        <p className={styles.secondary}>{primary}</p>
+      </Link>
     </div>
   )
 }
 
 export default function RotatingText() {
   return (
-      <div className={styles.body}>
-        <Text primary={"01 Blog"} secondary={"01 Blog"} />
-        <div className="flex items-center lg:justify-end">
-        <Text className="" primary={"02 Podcast"} secondary={"02 Podcast"} />
-        </div>
-        <Text primary={"03 Gallery"} secondary={"03 Gallery"} />
+    <div className={styles.body}>
+      <Text
+        primary="podcast"
+        href="https://open.spotify.com/show/4LuvyMi6lg6HURDxXwDN6t"
+        index={1}
+      />
+      <div className="flex items-center lg:justify-end">
+        <Text primary="blog" href="/blog" index={2} />
       </div>
+      <Text
+        primary="gallery"
+        href="https://www.instagram.com/sandyclopedia"
+        index={3}
+      />
+    </div>
   )
 }

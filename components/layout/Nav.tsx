@@ -26,6 +26,37 @@ interface NavImageProps {
   isActive: boolean
 }
 
+const Nav = ({ categories }: NavProps) => {
+  const [selectedLink, setSelectedLink] = useState({
+    isActive: false,
+    index: 0,
+  })
+
+  return (
+    <motion.div
+      variants={height}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className={`${styles.nav}`}
+    >
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <Body
+            categories={categories}
+            selectedLink={selectedLink}
+            setSelectedLink={setSelectedLink}
+          />
+        </div>
+        <NavImage
+          src={categories[selectedLink.index]?.picture?.url}
+          isActive={selectedLink.isActive}
+        />
+      </div>
+    </motion.div>
+  )
+}
+
 const Body: React.FC<BodyProps> = ({
   categories,
   selectedLink,
@@ -92,36 +123,5 @@ const NavImage: React.FC<NavImageProps> = ({ src, isActive }) => (
     <Image src={src} fill alt={"nav image"} />
   </motion.div>
 )
-
-const Nav = ({ categories }: NavProps) => {
-  const [selectedLink, setSelectedLink] = useState({
-    isActive: false,
-    index: 0,
-  })
-
-  return (
-    <motion.div
-      variants={height}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className={`${styles.nav}`}
-    >
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <Body
-            categories={categories}
-            selectedLink={selectedLink}
-            setSelectedLink={setSelectedLink}
-          />
-        </div>
-        <NavImage
-          src={categories[selectedLink.index]?.picture?.url}
-          isActive={selectedLink.isActive}
-        />
-      </div>
-    </motion.div>
-  )
-}
 
 export default Nav

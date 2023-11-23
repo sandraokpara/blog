@@ -37,6 +37,7 @@
     "next-video": "^0.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-responsive-carousel": "^3.2.23",
     "sass": "^1.69.5",
     "sharp": "^0.32.6",
     "tailwind-merge": "^1.13.2",

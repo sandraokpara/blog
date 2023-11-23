@@ -5,10 +5,10 @@ const FeaturedWork = async () => {
   const posts = await getFeaturedPosts();
 
   return (
-    <section className="">
-      <p className="text-lg pb-2">Featured Work</p>
+    <section className="pt-32 md:pt-16 lg:pt-6">
+      <p className="text-xs md:text-sm uppercase font-medium pb-4">Featured Posts</p>
       {posts && posts.map((post) => <Work key={post.id} post={post} />)}
-      <hr className="border-t border-black w-[90%]" />
+      <hr className="border-t border-foreground dark:border-[#333333] lg:w-[90%]" />
     </section>
   );
 };

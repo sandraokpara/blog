@@ -18,6 +18,7 @@ export const Grid = async ({ isCategory, categoryId }: GridProps) => {
 
   return (
     <section className="">
+      <div className="border border-foreground dark:border-[#333333]">
       {posts &&
         posts.flatMap((post) => (
           <div key={post.id}>
@@ -29,6 +30,7 @@ export const Grid = async ({ isCategory, categoryId }: GridProps) => {
             </Link>
           </div>
         ))}
+      </div>
     </section>
   )
 }

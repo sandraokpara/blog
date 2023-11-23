@@ -1,5 +1,4 @@
 .project{
-    border-top: 1px solid black;
     padding-top: 0.9rem;
     padding-bottom: 0.9rem;
     cursor: pointer;
@@ -11,7 +10,7 @@
   
 .project p{
     font-size: 3rem;
-    font-weight: lighter;
+    font-weight: 100;
     margin: 0px;
 }
 .project p:nth-of-type(1){
@@ -21,7 +20,7 @@
     margin-left: 0.75vw;
 }
 .project img{
-    width: 4.5rem;
+    width: 2.9rem;
 }
 
 .project .imgContainer{
@@ -30,3 +29,14 @@
   justify-content: center;
   width: 0;
 }
+
+
+@media only screen and (max-width: 768px) {
+    .project{
+        width: 100%;
+    }
+    .project p{
+        font-size: 1.2rem;
+        font-weight: normal;
+    }
+  }
