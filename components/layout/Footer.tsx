@@ -23,7 +23,7 @@ const Footer: FC<FooterProps> = () => {
   const stanqUser = session?.user
 
   return (
-    <footer className="px-6">
+    <footer className="px-3.5 md:px-4.5 lg:px-5.5">
       <div className="h-[50svh] text-center flex items-center justify-center">
         <div className="w-full md:max-w-[70%] lg:max-w-[50%]">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-2">Lets get in touch.</h2>
@@ -57,7 +57,7 @@ const Footer: FC<FooterProps> = () => {
                   variant: "ghost",
                 })}
               >
-                <LogIn className="h-5 w-5" />
+                <LogIn className="h-4 w-4 lg:h-5 lg:w-5" />
                 <span className="sr-only">Sign In</span>
               </div>
             </Link>
