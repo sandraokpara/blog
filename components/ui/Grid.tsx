@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-
 import { AllPostsType } from "@/types/validators"
 import { getCategoryPosts, getPosts } from "@/lib/requests"
 import { truncateString } from "@/lib/utils"
@@ -8,7 +7,6 @@ import { truncateString } from "@/lib/utils"
 interface GridProps {
   isCategory?: boolean
   categoryId?: string
-  categoryName?: string
 }
 
 interface GridSection {
@@ -31,7 +29,6 @@ const getClassName = (index: number): string => {
 export const Grid = async ({
   isCategory,
   categoryId,
-  categoryName,
 }: GridProps) => {
   const posts = isCategory
     ? await getCategoryPosts(categoryId)

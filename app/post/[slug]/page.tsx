@@ -1,6 +1,9 @@
+import { Metadata } from "next"
 import Image from "next/image"
 import { RichText } from "@graphcms/rich-text-react-renderer"
 
+import { SinglePostType } from "@/types/validators"
+import { siteConfig } from "@/config/site"
 import { getPosts } from "@/lib/requests"
 
 interface PostPageProps {
@@ -61,4 +64,45 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
     </article>
   )
+}
+
+export const generateMetadata = async ({
+  params,
+}: PostPageProps): Promise<Metadata> => {
+  const { siteName, creator, url } = siteConfig
+  const post = await getPosts(params.slug)
+
+  if (Array.isArray(post)) {
+    return {}
+  }
+
+  const title = post?.title
+  const description = post?.excerpt
+  const images = post?.coverImage.url
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName,
+      images: [
+        {
+          url: images,
+          width: 200,
+          height: 200,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      creator,
+      images,
+    },
+  }
 }
