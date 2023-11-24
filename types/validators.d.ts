@@ -75,7 +75,7 @@ export const SinglePostValidator = z.object({
       }),
     }),
     content: z.object({
-      html: z.string(),
+      raw: z.any(),
     }),
     date: z.string(),
     updatedAt: z.string(),

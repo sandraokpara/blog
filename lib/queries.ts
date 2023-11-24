@@ -86,7 +86,7 @@ export const querySinglePost = `query SinglePost($slug: String!) {
         }
       }
       content {
-        html
+        raw
       }
       date
       updatedAt
