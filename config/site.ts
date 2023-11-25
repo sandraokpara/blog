@@ -1,21 +1,25 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  title: "Stanq",
+  title: "Sandra Okpara",
   description:
-    "A frontend template bootstrapped with NextJS, Typescript, Next Auth, React Query and Shadcn UI.",
-  url: "https://stanq.joshuaedo.com",
+    "Sandra Okpara is a Blogger, Youtuber & Photographer based in Abuja, Nigeria.",
+  headline: "Blogger & Photographer",
+  username: "sandraokpara",
+  excerpt:
+    "Based in Abuja, Nigeria. Sandra runs a blog where she posts about her interests and experiences.",
+  url: "https://sandraokpara.com",
   creator: "Joshua Edo",
-  siteName: "STANQ-Template",
-  github: "https://github.com/joshuaedo/stanq-template",
-  images: ["https://joshuaedo.sirv.com/stanq/molecule-purple.png"],
-  author: {
-    name: "Joshua Edo",
-    twitter: "https://twitter.com/thegr8joshua",
-    github: "https://github.com/joshuaedo",
-    url: "https://joshuaedo.com",
-    images: [
-      "https://joshuaedo.sirv.com/joshuaedo/public/images/original/me-modified.png",
-    ],
+  siteName: "Who is Sandra Okpara?",
+  images: [
+    "https://sandraokpara.sirv.com/blog/image/purple.jpg",
+    "https://sandraokpara.sirv.com/blog/image/green.jpg",
+    "https://sandraokpara.sirv.com/blog/image/red.jpg",
+    "https://sandraokpara.sirv.com/blog/image/logo.jpg",
+  ],
+  poster: {
+    sm: "https://sandraokpara.sirv.com/blog/image/poster-sm.png",
+    md: "https://sandraokpara.sirv.com/blog/image/poster-md.png",
   },
+  videos: ["https://sandraokpara.sirv.com/blog/video/v2"],
 }

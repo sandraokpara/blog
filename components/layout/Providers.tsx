@@ -10,7 +10,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <SessionProvider>
-      <NextThemesProvider attribute="class" defaultTheme="dark" enableSystem>
+      <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
         <QueryClientProvider client={queryClient}>
           {children}
         </QueryClientProvider>

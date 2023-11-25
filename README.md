@@ -1,96 +1,61 @@
-# Stanq-Template
+# Sandra Okpara's Blog
 
-## Table of Contents
+## Version: 0.0.2
 
-- [Introduction](#introduction)
-- [Frameworks](#frameworks)
-- [UI](#ui)
-- [Hooks and Utilities](#hooks-and-utilities)
-- [Code quality](#code-quality)
-- [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [License](#license)
-- [Author](#author)
+Welcome to the repository for Sandra Okpara's personal blog and website. This project is built with Next.js, providing a robust foundation for creating a dynamic and engaging online presence. Below, you'll find essential information about the project structure, scripts, dependencies, and configuration.
 
-## Introduction
+### Project Structure
 
-Stanq is a React.js template bootstrapped with Shadcn UI, Typescript, Auth.js, Next.js App router, and React Query.
+The project structure is organized to facilitate easy development and maintenance. Key directories include:
 
-### Frameworks
+- **`config/`**: Contains configuration files for the blog.
+- **`lib/`**: Houses utility functions, such as fonts and other libraries.
+- **`styles/`**: Holds global styles for the project.
+- **`components/`**: Includes layout components like `Footer`, `Header`, and `Toaster`.
 
-- [Next.js](https://nextjs.org/) – React framework for building performant apps with the best developer experience
-- [Auth.js](https://authjs.dev/) – Handle user authentication with ease with providers like Google etc.
-- [React Query](https://tanstack.com/query) – Efficient data fetching and state management library for React applications
+### Scripts
 
-### UI
+- **dev**: Run the development server with `next dev`.
+- **build**: Build the application for production using `next build`.
+- **start**: Start the production server using `next start`.
+- **lint**: Run Next.js linting with `next lint`.
+- **lint:fix**: Fix linting issues automatically with `next lint --fix`.
+- **preview**: Build and start the application for preview.
+- **typecheck**: Run TypeScript type checking with `tsc --noEmit`.
+- **format:write**: Automatically format code with Prettier.
+- **format:check**: Check if the code meets Prettier formatting standards.
 
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework for rapid UI development
-- [Radix](https://www.radix-ui.com/) – Primitives like modal, popover, etc. to build a stellar user experience
-- [Shadcn UI](https://ui.shadcn.com/) – Beautifully designed components that you can copy and paste into your app.
-- [Lucide](https://lucide.dev/) – Beautifully simple, pixel-perfect icons
-- [next/font](https://nextjs.org/docs/basic-features/font-optimization) – Optimize custom fonts and remove external network requests for improved performance
-- [next-themes](https://github.com/pacocoursey/next-themes) – A library for adding dark mode support to Next.js applications
+### Dependencies
 
-### Hooks and Utilities
+- **@graphcms/rich-text-react-renderer**: ^0.6.1
+- **@radix-ui/react-avatar**: ^1.0.3
+- **@radix-ui/react-dialog**: ^1.0.4
+- **@radix-ui/react-dropdown-menu**: ^2.0.5
+- ... (and many more)
 
-- `useDate` – A custom React hook that provides information about the current date and time. It automatically updates every minute and returns an object with the current year and a greeting message based on the time of day.
+### Development Dependencies
 
-- `useDeviceSize` – A custom React hook that tracks the width and height of the window and updates them when the window is resized. It returns an array with the current width and height.
+- **@ianvs/prettier-plugin-sort-imports**: ^3.7.2
+- **@types/lodash.debounce**: ^4.0.7
+- **@types/node**: ^20.9.0
+- **@types/react**: ^18.2.14
+- ... (and many more)
 
-- `useOnClickOutside` – A custom React hook that listens for clicks or touch events outside a specified element (provided as a ref). It invokes a handler function when a click or touch event occurs outside the element.
+### Configuration
 
-- `cn` - A custom function that merges and formats CSS classes for easier class name management in React, particularly useful for Tailwind CSS integration.
+The main configuration file is `config/site.ts`, which contains essential details about Sandra Okpara's blog, such as title, description, and metadata. 
 
-### Code Quality
+### Layout Components
 
-- [TypeScript](https://www.typescriptlang.org/) – Static type checker for end-to-end typesafety
-- [Zod](https://github.com/colinhacks/zod) – A powerful TypeScript-first validation and parsing library for robust data handling.
-- [Prettier](https://prettier.io/) – Opinionated code formatter for consistent code style
-- [ESLint](https://eslint.org/) – Pluggable linter for Next.js and TypeScript
+The layout components (`Footer`, `Header`, `Toaster`) in the `components/layout` directory contribute to the overall structure and design of the blog.
 
-### Prerequisites
+### Getting Started
 
-Before you begin, ensure you have the following software installed:
+1. Clone the repository: `git clone https://sandraokpara/blog.git`
+2. Install dependencies: `npm install`
+3. Customize the `config/site.ts` file with your details.
 
-- Node.js
-- npm or Yarn
+### Additional Notes
 
-### Usage
-
-Follow these steps to set up and run stanq locally.
-
-1. Create a new project:
-
-   ```bash
-   npx create-next-app --example https://github.com/joshuaedo/stanq-template
-   ```
-
- 2.  Create a `.env.local` file in the project root and add the following variables:
-
-   ```env
-   NEXTAUTH_SECRET=your_next_auth_secret
-   NEXTAUTH_URL=your_next_auth_url
-   GOOGLE_CLIENT_ID=your_google_client_id
-   GOOGLE_CLIENT_SECRET=your_google_client_secret
-   NEXT_PUBLIC_NINJAS_API_KEY=api_key_from_ninjas_api
-   ```
-
-   Replace the placeholders with your actual Next Auth and Google OAuth credentials.
-
- 3. Run the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   The application should be accessible at `http://localhost:3000`.
-
- 4: Either remove the Hero.tsx file and fetchFacts() function or include your Ninja API Key from https://api-ninjas.com to disable the errors.
-
-## License
-
-This project is licensed under the MIT [License](https://github.com/joshuaedo/stanq-template/blob/main/LICENSE.md) 
-
-## Author
-
-- Joshua Edo ([joshuaedo.com](https://joshuaedo.com))
+- Ensure all dependencies are up-to-date for optimal performance.
+- Regularly check for updates in the Next.js ecosystem.

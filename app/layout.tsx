@@ -1,13 +1,38 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
-import { bebasNeue, generalSans, inter } from "@/lib/fonts"
+import { GeistSans } from "@/lib/fonts"
 import Footer from "@/components/layout/Footer"
-import { Header } from "@/components/layout/Header"
+import Header from "@/components/layout/Header"
 import Providers from "@/components/layout/Providers"
 import { Toaster } from "@/components/layout/Toaster"
 
 const { description, title, images, siteName, creator, url } = siteConfig
+
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body className={GeistSans.className}>
+          <Providers>
+            <div className="relative flex min-h-[100svh] flex-col bg-background">
+              {/* @ts-expect-error */}
+              <Header />
+              <div className="mt-24 md:mt-12 lg:mt-6 px-6 md:px-12 lg:px-32">{children}</div>
+              <Footer />
+              <Toaster />
+            </div>
+          </Providers>
+        </body>
+      </html>
+    </>
+  )
+}
 
 export const generateMetadata = async ({}): Promise<Metadata> => {
   return {
@@ -46,37 +71,11 @@ export const generateMetadata = async ({}): Promise<Metadata> => {
 }
 
 export const viewport = {
-   themeColor: [
-      { media: "(prefers-color-scheme: light)", color: "white" },
-      { media: "(prefers-color-scheme: dark)", color: "black" },
-    ],
-  width: 'device-width',
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  width: "device-width",
   initialScale: 1,
-};
-
-interface RootLayoutProps {
-  children: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
-  return (
-    <>
-      <html lang="en" suppressHydrationWarning>
-        <head>
-          <link rel="stylesheet" href={bebasNeue.variable} />
-          <link rel="stylesheet" href={generalSans.variable} />
-        </head>
-        <body className={inter.className}>
-          <Providers>
-            <div className="relative flex min-h-[100svh] flex-col bg-background">
-              <Header />
-              <div className="flex-1">{children}</div>
-              <Footer />
-              <Toaster />
-            </div>
-          </Providers>
-        </body>
-      </html>
-    </>
-  )
-}

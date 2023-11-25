@@ -1,0 +1,55 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  transform-style: preserve-3d;
+}
+
+.textContainer {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+}
+
+.textContainer p {
+  font-size: 3.6rem;
+  font-weight: 420;
+  text-transform: uppercase;
+  margin: 0px;
+  transition: all 0.6s;
+  line-height: 1.5;
+  width: fit-content;
+}
+
+.textContainer .secondary {
+  transform: rotateX(-90deg) translateY(3.5vw);
+  transform-origin: bottom center;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
+
+.textContainer:hover {
+  transform: rotateX(90deg);
+}
+
+.textContainer:hover .secondary {
+  opacity: 1;
+}
+
+.textContainer:hover .primary {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    width: 100%;
+  }
+  .textContainer p {
+    width: 100%;
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}
