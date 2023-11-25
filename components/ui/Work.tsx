@@ -30,7 +30,7 @@ const Work: React.FC<WorkProps> = ({ post }) => {
   const { title1, title2 } = splitTitle(truncateString(title, 25))
 
   return (
-    <Link key={post.id} href={`/post/${post.slug}`}>
+    <Link key={post.id} href={`/post/${post.slug}`} className="flex justify-center">
       <div
         onMouseEnter={() => {
           setIsActive(true)
