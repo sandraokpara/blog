@@ -1,10 +1,9 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import { RichText } from "@graphcms/rich-text-react-renderer"
-
-import { SinglePostType } from "@/types/validators"
 import { siteConfig } from "@/config/site"
 import { getPosts } from "@/lib/requests"
+import { abyssinica } from "@/lib/fonts"
 
 interface PostPageProps {
   params: {
@@ -38,12 +37,12 @@ export default async function PostPage({ params }: PostPageProps) {
           </div>
         </section>
 
-        <section>
+        <section className={abyssinica.className}>
           <RichText
             content={post?.content.raw}
             renderers={{
               p: ({ children }) => (
-                <p className="text-xs md:text-sm py-1">{children}</p>
+                <p className="text-sm md:text-base py-1">{children}</p>
               ),
               img: ({ src }) => (
                 <div className="lg:h-[60svh] flex justify-start py-6">

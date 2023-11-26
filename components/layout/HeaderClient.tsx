@@ -70,7 +70,8 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
                 variants={opacity}
                 animate={!isActive ? "open" : "closed"}
               >
-                Katigoris
+                {/* Katigoris */}
+                Categories
               </motion.p>
               <motion.p
                 variants={opacity}
@@ -114,7 +115,8 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
             rel="noopener noreferrer"
             className="flex"
           >
-            Let&apos;s talk
+            {/* Let&apos;s talk */}
+            Contact Me
           </a>
         </motion.div>
       </div>

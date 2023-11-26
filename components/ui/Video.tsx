@@ -1,74 +1,38 @@
+import Image from "next/image";
 import { FC } from "react"
-// import Video from "next-video"
 
 interface VideoProps {
-  src: string
+  src: string[]
   poster?: { sm: string; md: string }
   className?: string
+  fallbackSrc: string
+  title?: string
 }
 
-const HTMLVideo: FC<VideoProps> = ({ src, poster, className }) => {
+const Video: FC<VideoProps> = ({ src, poster, fallbackSrc, title, className }) => {
   return (
-    <video
-      data-nosnippet
-      loop
-      muted
-      autoPlay
-      className={`${className} object-contain object-center`}
-      poster={poster?.sm}
-    >
-      <source src={`${src}/sm.mp4`} type="video/mp4" />
-      <source src={`${src}/sm.webm`} type="video/webm" />
-      <source src={`${src}/sm.ogg`} type="video/ogg" />
-    </video>
-  )
-}
-
-const HTMLBackgroundVideo: FC<VideoProps> = ({ src, poster, className }) => {
-  return (
-    <div className="w-full h-full">
+    <>
       <video
         data-nosnippet
         loop
         muted
         autoPlay
-        className={`${className} object-cover object-center hidden md:flex`}
-        poster={poster?.md}
-      >
-        <source src={`${src}/md.mp4`} type="video/mp4" />
-        <source src={`${src}/md.webm`} type="video/webm" />
-        <source src={`${src}/md.ogg`} type="video/ogg" />
-      </video>
-      <video
-        data-nosnippet
-        loop
-        muted
-        autoPlay
-        className={`${className} object-cover object-center flex md:hidden`}
+        className={`${className} object-contain object-center hidden md:flex`}
         poster={poster?.sm}
       >
         <source src={`${src}/sm.mp4`} type="video/mp4" />
         <source src={`${src}/sm.webm`} type="video/webm" />
         <source src={`${src}/sm.ogg`} type="video/ogg" />
       </video>
-    </div>
+      <Image
+        src={fallbackSrc}
+        alt={title ?? ""}
+        height={1000}
+        width={1000}
+        className="w-full h-full object-contain object-center md:hidden"
+      />
+    </>
   )
 }
-// const NextVideo: FC<VideoProps> = ({ src, poster, className }) => {
-//   return (
-//     <div className="w-full h-full">
-//       <Video
-//         data-nosnippet
-//         loop
-//         controls={false}
-//         src={`${src}/sm.mp4`}
-//         muted
-//         autoPlay
-//         className={`${className} object-cover object-center`}
-//         poster={poster?.md}
-//       />
-//     </div>
-//   )
-// }
 
-export { HTMLVideo, HTMLBackgroundVideo }
+export default Video

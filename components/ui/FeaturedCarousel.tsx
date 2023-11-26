@@ -8,6 +8,7 @@ import Image from "next/image"
 
 import { FeaturedPostsType } from "@/types/validators"
 import { truncateString } from "@/lib/utils"
+import { abyssinica } from "@/lib/fonts"
 
 interface FeaturedCarouselProps {
   posts: FeaturedPostsType[]
@@ -40,7 +41,7 @@ const FeaturedCarousel = ({ posts }: FeaturedCarouselProps) => {
                   {post?.title}
                 </p>
                 <p className="pb-12 lg:pb-1 w-[75%] lg:w-full font-normal text-xs md:text-sm lg:text-base">
-                  {truncateString(post?.excerpt, 150)}
+                  <span className={""}>{truncateString(post?.excerpt, 150)}</span>
                 </p>
               </div>
               <div className="h-[60svh] flex justify-center items-center">
