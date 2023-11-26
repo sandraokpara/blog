@@ -36,6 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
 export const generateMetadata = async ({}): Promise<Metadata> => {
   return {
+    metadataBase: new URL(url),
     title,
     description,
     openGraph: {

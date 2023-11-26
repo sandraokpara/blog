@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
+
 import { AllPostsType } from "@/types/validators"
+import { abyssinica } from "@/lib/fonts"
 import { getCategoryPosts, getPosts } from "@/lib/requests"
 import { truncateString } from "@/lib/utils"
 
@@ -26,10 +28,7 @@ const getClassName = (index: number): string => {
   return classMappings[index] || ""
 }
 
-export const Grid = async ({
-  isCategory,
-  categoryId,
-}: GridProps) => {
+export const Grid = async ({ isCategory, categoryId }: GridProps) => {
   const posts = isCategory
     ? await getCategoryPosts(categoryId)
     : ((await getPosts()) as AllPostsType[])
@@ -104,9 +103,13 @@ const GridSection = ({
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
+
                   <p className="font-normal">
                     <span className="font-semibold">{post?.title}</span>
-                    <span> - {truncateString(post?.excerpt, 100)}</span>
+                    <span className={abyssinica.className}>
+                      {" "}
+                      - {truncateString(post?.excerpt, 100)}
+                    </span>
                   </p>
                 </Link>
               </div>

@@ -1,5 +1,4 @@
 import { Metadata } from "next"
-
 import { siteConfig } from "@/config/site"
 import { getCategoryPosts } from "@/lib/requests"
 import { Grid } from "@/components/ui/Grid"
@@ -21,9 +20,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   )
 }
 
-export const generateMetadata = async ({
-  params,
-}: CategoryPageProps): Promise<Metadata> => {
+export const generateMetadata = async ({params}: CategoryPageProps): Promise<Metadata> => {
   const { excerpt: description, siteName, creator, url } = siteConfig
   const posts = await getCategoryPosts(params.categoryId)
   const title = posts?.[0]?.category?.name

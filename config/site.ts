@@ -3,11 +3,10 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   title: "Sandra Okpara",
   description:
-    "Sandra Okpara is a Blogger, Youtuber & Photographer based in Abuja, Nigeria.",
-  headline: "Blogger & Photographer",
-  username: "sandraokpara",
+    "Sandra Okpara is a Writer & Multifaceted Creator based in Abuja, Nigeria.",
+  headline: "Writer & Multifaceted Creator",
   excerpt:
-    "Based in Abuja, Nigeria. Sandra runs a blog where she posts about her interests and experiences.",
+    "Writing on Earth. This blog is a canvas for my diverse range of interests.",
   url: "https://sandraokpara.com",
   creator: "Joshua Edo",
   siteName: "Who is Sandra Okpara?",
@@ -16,6 +15,7 @@ export const siteConfig = {
     "https://sandraokpara.sirv.com/blog/image/green.jpg",
     "https://sandraokpara.sirv.com/blog/image/red.jpg",
     "https://sandraokpara.sirv.com/blog/image/logo.jpg",
+    "https://sandraokpara.sirv.com/blog/image/room.jpeg",
   ],
   poster: {
     sm: "https://sandraokpara.sirv.com/blog/image/poster-sm.png",
