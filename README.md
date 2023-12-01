@@ -1,7 +1,5 @@
 # Sandra Okpara's Blog
 
-## Version: 0.0.2
-
 Welcome to the repository for Sandra Okpara's personal blog and website. This project is built with Next.js, providing a robust foundation for creating a dynamic and engaging online presence. Below, you'll find essential information about the project structure, scripts, dependencies, and configuration.
 
 ### Project Structure
