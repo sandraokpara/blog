@@ -1,5 +1,6 @@
 import React from "react"
 import Image from "next/image"
+
 import { siteConfig } from "@/config/site"
 import FeaturedWork from "@/components/ui/FeaturedWork"
 import RotatingText from "@/components/ui/RotatingText"
@@ -10,7 +11,6 @@ const { videos, poster, title, excerpt, headline, images } = siteConfig
 export const dynamic = "force-dynamic"
 
 export default function HomePage() {
-
   return (
     <div className="mt-24">
       <section className="grid grid-cols-1 lg:grid-cols-2 space-y-32 lg:space-y-0">
@@ -38,7 +38,13 @@ export default function HomePage() {
             <span>ecotourism, history</span>
           </p>
           <div className="h-[70svh] flex justify-center items-center">
-            <Video src={videos} poster={poster} fallbackSrc={images[4]} title={title} className="h-full lg:-ml-12" />
+            <Video
+              src={videos}
+              poster={poster}
+              fallbackSrc={images[4]}
+              title={title}
+              className="h-full lg:-ml-12"
+            />
           </div>
           <p className="text-sm">
             <span>fashion, art</span>
@@ -51,4 +57,3 @@ export default function HomePage() {
     </div>
   )
 }
-
