@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -103,10 +105,23 @@ section {
   }
 }
 
-.melodrama {
-  font-family: "Melodrama", sans-serif;
+.abyssinica {
+  font-family: "Abyssinica SIL", serif;
 }
 
-.general-sans {
-  font-family: "General Sans", sans-serif;
+#comment-section {
+  scrollbar-width: none !important;
+}
+
+#comment-section::-webkit-scrollbar {
+  width: 6.5px !important;
+}
+
+#comment-section::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+#comment-section::-webkit-scrollbar-thumb {
+  background: black !important;
+  border-radius: 6.5px !important;
 }

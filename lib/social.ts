@@ -4,6 +4,10 @@ export const socialLinks = [
     url: "mailto:sandraokpara8@gmail.com",
   },
   {
+    name: "Newsletter",
+    url: "/newsletter",
+  },
+  {
     name: "Twitter",
     url: "https://x.com/beehives__",
   },
@@ -14,9 +18,5 @@ export const socialLinks = [
   {
     name: "Instagram",
     url: "https://instagram.com/sandraaokpara",
-  },
-  {
-    name: "Pinterest",
-    url: "https://pin.it/6NzHHqL",
   },
 ]

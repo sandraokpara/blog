@@ -21,19 +21,22 @@ const Footer: FC<FooterProps> = () => {
   const { year } = useDate()
   const { data: session } = useSession()
   const stanqUser = session?.user
+  const isMagnetic = false
 
   return (
-    <footer className="px-3.5 md:px-4.5 lg:px-5.5">
-      <div className="h-[50svh] text-center flex items-center justify-center">
+    <footer className="md:px-4.5 lg:px-5.5 px-3.5">
+      <div className="flex h-[50svh] items-center justify-center text-center">
         <div className="w-full md:max-w-[70%] lg:max-w-[50%]">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-2">Lets get in touch.</h2>
+          <h2 className="mb-2 text-4xl font-normal md:text-5xl lg:text-6xl">
+            Lets get in touch.
+          </h2>
           {socialLinks.map(({ name: title, url: href }) => (
             <Link
               href={href}
               key={title}
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonVariants({
+              className={buttonVariants(isMagnetic)({
                 variant: "link",
               })}
             >
@@ -52,7 +55,7 @@ const Footer: FC<FooterProps> = () => {
           ) : (
             <Link href="/sign-in">
               <div
-                className={buttonVariants({
+                className={buttonVariants(isMagnetic)({
                   size: "icon",
                   variant: "ghost",
                 })}

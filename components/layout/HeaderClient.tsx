@@ -40,9 +40,10 @@ const HeaderClient = ({ categories }: HeaderClientProps) => {
 
   return (
     <header
+      // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
       className={`${
         styles.header
-      } ${headerBG} text-base lg:text-lg tracking-tight placeholder:fixed top-0 w-full z-40 ${
+      } ${headerBG} top-0 z-40 w-full text-base tracking-tight placeholder:fixed lg:text-lg ${
         isActive ? "bg-black bg-opacity-50" : ""
       }
   

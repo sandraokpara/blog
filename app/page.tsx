@@ -13,9 +13,9 @@ export const dynamic = "force-dynamic"
 export default function HomePage() {
   return (
     <div className="mt-24">
-      <section className="grid grid-cols-1 lg:grid-cols-2 space-y-32 lg:space-y-0">
-        <div className="col-span-2 lg:col-span-1 flex flex-col items-end gap-8 space-y-16 lg:space-y-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center">
+      <section className="grid grid-cols-1 space-y-32 lg:grid-cols-2 lg:space-y-0">
+        <div className="col-span-2 flex flex-col items-end gap-8 space-y-16 lg:col-span-1 lg:space-y-0">
+          <div className="grid grid-cols-1 place-items-center lg:grid-cols-2">
             <div>
               <Image
                 src="/round-purple.png"
@@ -26,18 +26,18 @@ export default function HomePage() {
               />
             </div>
             <div className="space-y-4 text-center lg:text-start">
-              <h2 className="font-medium text-2xl">{title}</h2>
-              <h4 className="font-normal uppercase text-base">{headline}</h4>
+              <h2 className="text-2xl font-medium">{title}</h2>
+              <h4 className="text-base font-normal uppercase">{headline}</h4>
               <p className="text-sm">{excerpt}</p>
             </div>
           </div>
           <RotatingText />
         </div>
-        <div className="col-span-2 lg:col-span-1 lg:mr-16 space-y-2">
+        <div className="col-span-2 space-y-2 lg:col-span-1 lg:mr-16">
           <p className="flex justify-end text-sm">
             <span>ecotourism, history</span>
           </p>
-          <div className="h-[70svh] flex justify-center items-center">
+          <div className="flex h-[70svh] items-center justify-center">
             <Video
               src={videos}
               poster={poster}
