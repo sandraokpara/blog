@@ -59,10 +59,10 @@ const CreateComment = ({ slug }: CreateCommentProps) => {
       })
     },
     onSuccess: () => {
-      toast({
-        description: "Your comment was posted!",
-      })
       startTransition(() => {
+        toast({
+          description: "Your comment was posted!",
+        })
         router.refresh()
       })
     },
@@ -83,6 +83,7 @@ const CreateComment = ({ slug }: CreateCommentProps) => {
                 <FormControl>
                   <Textarea
                     {...field}
+                    rows={1}
                     className="h-5 border border-transparent shadow-md placeholder:text-background dark:border-[#333333]"
                     placeholder="What's on your mind?"
                   />

@@ -38,9 +38,13 @@ const CommentSection = ({}) => {
       id="comment-section"
       className="max-h-[70svh] space-y-4 overflow-auto py-1 pl-3 pr-6 text-sm"
     >
-      <h1 className="text-xl font-medium">Responses ({commentCount})</h1>
+      <h1 className="text-xl font-medium">
+        {commentCount > 0
+          ? `Responses (${commentCount})`
+          : "Be the first to post"}
+      </h1>
       <CreateComment slug={slug} />
-      <div className="pt-4">
+      <div className="min-w-[80svw] pt-4 lg:min-w-[45svw]">
         {data?.comments?.map((comment, index) => (
           <div className="space-y-3 border-t py-8" key={index}>
             <div className="flex items-center gap-3">
