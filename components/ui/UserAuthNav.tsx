@@ -25,9 +25,11 @@ interface UserAuthNavProps {
 }
 
 const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
+  const isMagnetic = false
+
   return (
     <div
-      className={buttonVariants({
+      className={buttonVariants(isMagnetic)({
         size: "icon",
         variant: "ghost",
       })}

@@ -6,7 +6,7 @@ const FeaturedWork = async () => {
 
   return (
     <section className="pt-32 md:pt-16 lg:pt-6">
-      <p className="text-xs md:text-sm uppercase font-medium pb-4 px-0 lg:px-16">Featured Posts</p>
+      <p className="px-0 pb-4 text-xs font-medium uppercase md:text-sm lg:px-16">Featured Posts</p>
       {posts && posts.map((post) => <Work key={post.id} post={post} />)}
       <hr className="border-t border-foreground dark:border-[#333333]" />
     </section>

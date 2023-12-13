@@ -1,7 +1,12 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+
 import { siteConfig } from "@/config/site"
 import { GeistSans } from "@/lib/fonts"
+import Newsletter from "@/components/ui/Newsletter"
+import { CommentSection } from "@/components/ui/comments/CommentSection"
+import CommentsModal from "@/components/ui/modals/CommentsModal"
+import NewsletterModal from "@/components/ui/modals/NewsletterModal"
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/Header"
 import Providers from "@/components/layout/Providers"
@@ -23,8 +28,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="relative flex min-h-[100svh] flex-col bg-background">
               {/* @ts-expect-error */}
               <Header />
-              <div className="mt-24 md:mt-12 lg:mt-6 px-6 md:px-12 lg:px-32">{children}</div>
+
+              <div className="mt-24 px-6 md:mt-12 md:px-12 lg:mt-6 lg:px-32">
+                {children}
+              </div>
+
+              <CommentsModal>
+                <CommentSection />
+              </CommentsModal>
               <Footer />
+
+              {/* @ts-expect-error */}
+              <NewsletterModal>
+                <Newsletter />
+              </NewsletterModal>
+
               <Toaster />
             </div>
           </Providers>
@@ -79,4 +97,3 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
 }
-

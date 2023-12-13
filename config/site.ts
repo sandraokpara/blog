@@ -10,6 +10,7 @@ export const siteConfig = {
   url: "https://sandraokpara.com",
   creator: "Joshua Edo",
   siteName: "Who is Sandra Okpara?",
+  email: "sandraokpara8@gmail.com",
   images: [
     "https://sandraokpara.sirv.com/blog/image/purple.jpg",
     "https://sandraokpara.sirv.com/blog/image/green.jpg",

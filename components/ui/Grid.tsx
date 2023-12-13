@@ -47,15 +47,15 @@ export const Grid = async ({ isCategory, categoryId }: GridProps) => {
   return (
     <section className="mt-12 lg:mt-0">
       {!isCategory ? (
-        <h1 className="text-xs md:text-sm uppercase font-medium text-center lg:text-start pb-4">
+        <h1 className="pb-4 text-center text-xs font-medium uppercase md:text-sm lg:text-start">
           All Posts
         </h1>
       ) : (
-        <h1 className="text-3xl md:text-4xl lg:6xl uppercase font-medium text-center lg:text-end pb-4 pt-6 md:pt-12 lg:pt-20">
+        <h1 className="lg:6xl pb-4 pt-6 text-center text-3xl font-medium uppercase md:pt-12 md:text-4xl lg:pt-20 lg:text-end">
           {posts[0]?.category?.name}
         </h1>
       )}
-      <div className="border border-foreground dark:border-[#333333] p-4">
+      <div className="border border-foreground p-4 dark:border-[#333333]">
         {chunkedPosts.map((chunk, index) => (
           <GridSection
             key={index}
@@ -73,7 +73,7 @@ const GridSection = ({
   isLastSection,
 }: GridSection & { isLastSection: boolean }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 w-full">
+    <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-4">
       {postsChunk &&
         postsChunk.map((post, index) => {
           const className = getClassName(index)
@@ -82,11 +82,11 @@ const GridSection = ({
           return (
             <div
               key={post.id}
-              className={`px-2 py-6 space-y-4 text-xs md:text-sm ${
+              className={`space-y-4 px-2 py-6 text-xs md:text-sm ${
                 isLastPost ? "" : "border-b "
               } ${className} border-foreground dark:border-[#333333]`}
             >
-              <div className="w-full flex justify-between uppercase font-medium">
+              <div className="flex w-full justify-between font-medium uppercase">
                 <Link href={`/blog/category/${post.category.id}`}>
                   <span>{post?.category.name}</span>
                 </Link>
@@ -100,7 +100,7 @@ const GridSection = ({
                       alt={post?.title}
                       height={1000}
                       width={1000}
-                      className="w-full h-full object-cover object-center"
+                      className="h-full w-full object-cover object-center"
                     />
                   </div>
 

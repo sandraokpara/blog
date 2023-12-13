@@ -7,8 +7,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Image from "next/image"
 
 import { FeaturedPostsType } from "@/types/validators"
-import { truncateString } from "@/lib/utils"
 import { abyssinica } from "@/lib/fonts"
+import { truncateString } from "@/lib/utils"
 
 interface FeaturedCarouselProps {
   posts: FeaturedPostsType[]
@@ -16,8 +16,8 @@ interface FeaturedCarouselProps {
 
 const FeaturedCarousel = ({ posts }: FeaturedCarouselProps) => {
   return (
-    <section className="my-1 md:my-4 lg:my-16 min-h-[50svh] space-y-4">
-      <h1 className="text-xs md:text-sm uppercase font-medium text-center lg:text-start">
+    <section className="my-1 min-h-[50svh] space-y-4 md:my-4 lg:my-16">
+      <h1 className="text-center text-xs font-medium uppercase md:text-sm lg:text-start">
         Featured Posts
       </h1>
       <Carousel
@@ -35,22 +35,24 @@ const FeaturedCarousel = ({ posts }: FeaturedCarouselProps) => {
       >
         {posts.flatMap((post) => (
           <Link key={post.id} href={`/post/${post.slug}`} className="">
-            <div className="w-full lg:grid grid-cols-1 lg:grid-cols-2 place-items-center relative">
-              <div className="dark:bg-[#00000080] bg-[#f7f5f5] bg-opacity-20 lg:bg-transparent lg:dark:bg-transparent absolute lg:relative h-[60svh] space-y-4 flex flex-col justify-end lg:justify-center items-center text-start">
-                <p className="w-[75%] lg:w-full lg:font-thin text-2xl md:text-4xl lg:text-5xl">
+            <div className="relative w-full grid-cols-1 place-items-center lg:grid lg:grid-cols-2">
+              <div className="opacity/20 absolute flex h-[60svh] flex-col items-center justify-end space-y-4 bg-[#f7f5f5] text-start dark:bg-[#00000080] lg:relative lg:justify-center lg:bg-transparent lg:dark:bg-transparent">
+                <p className="w-[75%] text-2xl md:text-4xl lg:w-full lg:text-5xl lg:font-thin">
                   {post?.title}
                 </p>
-                <p className="pb-12 lg:pb-1 w-[75%] lg:w-full font-normal text-xs md:text-sm lg:text-base">
-                  <span className={""}>{truncateString(post?.excerpt, 150)}</span>
+                <p className="w-[75%] pb-12 text-xs font-normal md:text-sm lg:w-full lg:pb-1 lg:text-base">
+                  <span className={""}>
+                    {truncateString(post?.excerpt, 150)}
+                  </span>
                 </p>
               </div>
-              <div className="h-[60svh] flex justify-center items-center">
+              <div className="flex h-[60svh] items-center justify-center">
                 <Image
                   src={post.coverImage.url}
                   alt={post.title}
                   width={1000}
                   height={1000}
-                  className="h-full w-full object-cover lg:object-contain object-center"
+                  className="h-full w-full object-cover object-center lg:object-contain"
                 />
               </div>
             </div>
