@@ -37,6 +37,6 @@ export async function PATCH(req: Request) {
       })
     }
 
-    return new Response("Could not post data", { status: 500 })
+    return new Response(error + " Could not post data", { status: 500 })
   }
 }
