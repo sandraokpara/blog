@@ -1,8 +1,9 @@
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import { nanoid } from "nanoid"
 import { NextAuthOptions, getServerSession } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { db } from "./db";
-import { nanoid } from "nanoid";
+
+import { db } from "./db"
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -42,7 +43,7 @@ export const authOptions: NextAuthOptions = {
         return token
       }
 
-      if (!dbUser.username){
+      if (!dbUser.username) {
         await db.user.update({
           where: {
             id: dbUser.id,
@@ -61,9 +62,13 @@ export const authOptions: NextAuthOptions = {
         username: dbUser.username,
       }
     },
-    redirect() {
-      return "/blog"
-    }
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
+    },
   },
 }
 
