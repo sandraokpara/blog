@@ -12,11 +12,17 @@ export async function GET(req: Request) {
         where: {
           slug,
         },
+        include: {
+          author: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
       }),
     ])
 
     const results = {
-      commments: commentResults,
+      comments: commentResults,
     }
 
     return new Response(JSON.stringify(results))
