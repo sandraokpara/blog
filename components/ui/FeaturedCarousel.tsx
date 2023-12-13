@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
+/* eslint-disable tailwindcss/classnames-order */
 "use client"
 
 import Link from "next/link"
@@ -36,7 +38,7 @@ const FeaturedCarousel = ({ posts }: FeaturedCarouselProps) => {
         {posts.flatMap((post) => (
           <Link key={post.id} href={`/post/${post.slug}`} className="">
             <div className="relative w-full grid-cols-1 place-items-center lg:grid lg:grid-cols-2">
-              <div className="opacity/20 absolute flex h-[60svh] flex-col items-center justify-end space-y-4 bg-[#f7f5f5] text-start dark:bg-[#00000080] lg:relative lg:justify-center lg:bg-transparent lg:dark:bg-transparent">
+              <div className="bg-opacity-20 absolute flex h-[60svh] flex-col items-center justify-end space-y-4 bg-[#f7f5f5] text-start dark:bg-[#00000080] lg:relative lg:justify-center lg:bg-transparent lg:dark:bg-transparent">
                 <p className="w-[75%] text-2xl md:text-4xl lg:w-full lg:text-5xl lg:font-thin">
                   {post?.title}
                 </p>
