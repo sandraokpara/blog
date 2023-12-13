@@ -38,6 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </CommentsModal>
               <Footer />
 
+              {/* @ts-expect-error */}
               <NewsletterModal>
                 <Newsletter />
               </NewsletterModal>
