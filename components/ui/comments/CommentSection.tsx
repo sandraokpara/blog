@@ -4,16 +4,14 @@ import { usePathname } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { MessageCircle, Share } from "lucide-react"
+
+import { PostComments } from "@/types/comments"
 import { siteConfig } from "@/config/site"
 import { formatTimeToNow, getRandomNumber } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
+
 import UserAvatar from "../UserAvatar"
 import CreateComment from "./CreateComment"
-
-interface ToggleCommentsAndShareProps {
-  isModalOpen: boolean
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
 
 const { url } = siteConfig
 
@@ -60,6 +58,10 @@ const CommentSection = ({}) => {
       </div>
     </div>
   )
+}
+interface ToggleCommentsAndShareProps {
+  isModalOpen: boolean
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const ToggleCommentsAndShare = ({

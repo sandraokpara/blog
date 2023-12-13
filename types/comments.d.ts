@@ -1,8 +1,8 @@
-type PostComments = {
+export type PostComments = {
   comments: PostComment[]
 }
 
-type PostCommentAuthor = {
+export type PostCommentAuthor = {
   id: string
   name: string
   email: string
@@ -12,7 +12,7 @@ type PostCommentAuthor = {
   isSubscribed: boolean | null
 }
 
-type PostComment = {
+export type PostComment = {
   id: string
   text: string
   createdAt: string
