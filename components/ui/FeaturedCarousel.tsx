@@ -7,8 +7,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Image from "next/image"
 
 import { FeaturedPostsType } from "@/types/validators"
-import { truncateString } from "@/lib/utils"
 import { abyssinica } from "@/lib/fonts"
+import { truncateString } from "@/lib/utils"
 
 interface FeaturedCarouselProps {
   posts: FeaturedPostsType[]
@@ -36,12 +36,14 @@ const FeaturedCarousel = ({ posts }: FeaturedCarouselProps) => {
         {posts.flatMap((post) => (
           <Link key={post.id} href={`/post/${post.slug}`} className="">
             <div className="relative w-full grid-cols-1 place-items-center lg:grid lg:grid-cols-2">
-              <div className="absolute flex h-[60svh] flex-col items-center justify-end space-y-4 bg-[#f7f5f5] bg-opacity-20 text-start dark:bg-[#00000080] lg:relative lg:justify-center lg:bg-transparent lg:dark:bg-transparent">
+              <div className="opacity/20 absolute flex h-[60svh] flex-col items-center justify-end space-y-4 bg-[#f7f5f5] text-start dark:bg-[#00000080] lg:relative lg:justify-center lg:bg-transparent lg:dark:bg-transparent">
                 <p className="w-[75%] text-2xl md:text-4xl lg:w-full lg:text-5xl lg:font-thin">
                   {post?.title}
                 </p>
                 <p className="w-[75%] pb-12 text-xs font-normal md:text-sm lg:w-full lg:pb-1 lg:text-base">
-                  <span className={""}>{truncateString(post?.excerpt, 150)}</span>
+                  <span className={""}>
+                    {truncateString(post?.excerpt, 150)}
+                  </span>
                 </p>
               </div>
               <div className="flex h-[60svh] items-center justify-center">

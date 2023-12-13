@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { FC } from "react"
+import Image from "next/image"
 
 interface VideoProps {
   src: string[]
@@ -9,7 +9,13 @@ interface VideoProps {
   title?: string
 }
 
-const Video: FC<VideoProps> = ({ src, poster, fallbackSrc, title, className }) => {
+const Video: FC<VideoProps> = ({
+  src,
+  poster,
+  fallbackSrc,
+  title,
+  className,
+}) => {
   return (
     <>
       <video
@@ -17,7 +23,7 @@ const Video: FC<VideoProps> = ({ src, poster, fallbackSrc, title, className }) =
         loop
         muted
         autoPlay
-        className={`${className} object-contain object-center hidden md:flex`}
+        className={`${className} hidden object-contain object-center md:flex`}
         poster={poster?.sm}
       >
         <source src={`${src}/sm.mp4`} type="video/mp4" />
@@ -29,7 +35,7 @@ const Video: FC<VideoProps> = ({ src, poster, fallbackSrc, title, className }) =
         alt={title ?? ""}
         height={1000}
         width={1000}
-        className="w-full h-full object-contain object-center md:hidden"
+        className="h-full w-full object-contain object-center md:hidden"
       />
     </>
   )

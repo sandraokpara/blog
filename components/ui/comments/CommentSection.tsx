@@ -7,8 +7,6 @@ import { MessageCircle, Share } from "lucide-react"
 import { useSession } from "next-auth/react"
 
 import { siteConfig } from "@/config/site"
-
-import { Input } from "../Input"
 import UserAvatar from "../UserAvatar"
 import CreateComment from "./CreateComment"
 

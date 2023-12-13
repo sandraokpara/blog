@@ -12,9 +12,6 @@ export async function GET(req: Request) {
         where: {
           slug,
         },
-        include: {
-          _count: true,
-        },
       }),
     ])
 
