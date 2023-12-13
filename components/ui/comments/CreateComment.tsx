@@ -26,7 +26,14 @@ const CreateComment = ({ slug }: CreateCommentProps) => {
   const { data: session } = useSession()
   const CommentValidator = z.object({
     slug: z.string(),
-    text: z.string(),
+    text: z
+      .string()
+      .min(3, {
+        message: "Comment must be at least 3 characters.",
+      })
+      .max(150, {
+        message: "Comment must be less than 150 characters.",
+      }),
     authorId: z.string(),
   })
 

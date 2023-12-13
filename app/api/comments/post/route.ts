@@ -7,9 +7,17 @@ export async function PATCH(req: Request) {
   try {
     const CommentValidator = z.object({
       slug: z.string(),
-      text: z.string(),
+      text: z
+        .string()
+        .min(3, {
+          message: "Comment must be at least 3 characters.",
+        })
+        .max(150, {
+          message: "Comment must be less than 150 characters.",
+        }),
       authorId: z.string(),
     })
+
     const body = await req.json()
 
     const { slug, text, authorId } = CommentValidator.parse(body)
