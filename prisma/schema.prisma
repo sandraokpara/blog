@@ -63,5 +63,4 @@ model Comment {
     authorId  String
     userId    String
     slug      String
-    commentId String?
 }
