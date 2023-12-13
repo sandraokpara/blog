@@ -46,6 +46,7 @@ const CreateComment = ({ slug }: CreateCommentProps) => {
       return data
     },
     onError: (err) => {
+      console.log(err)
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
           return loginToast()
