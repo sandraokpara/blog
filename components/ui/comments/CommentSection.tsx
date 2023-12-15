@@ -100,20 +100,22 @@ const ToggleCommentsAndShare = ({
   }
 
   return (
-    <div className="mt-9 flex w-fit items-center gap-6 px-6 text-sm  font-normal md:px-12 lg:mt-6 lg:px-64">
-      <div
-        onClick={() => setIsModalOpen(!isModalOpen)}
-        className="flex cursor-pointer items-center gap-1 opacity-70 hover:opacity-100"
-      >
-        <MessageCircle className="h-4 w-4" strokeWidth={0.9} />
-        <span className="mt-[0.9]">( {commentCount} )</span>
-      </div>
-      <div
-        onClick={handleSharePage}
-        className="flex cursor-pointer items-center gap-1 opacity-70 hover:opacity-100"
-      >
-        <Share className="h-4 w-4" strokeWidth={0.9} />
-        <span className="mt-[0.9]">( {randomShareCount} )</span>
+    <div className="flex h-fit items-center justify-center">
+      <div className="mt-9 flex w-full max-w-3xl items-center gap-6 px-4 text-sm font-normal lg:px-0">
+        <div
+          onClick={() => setIsModalOpen(!isModalOpen)}
+          className="flex cursor-pointer items-center gap-1 opacity-70 hover:opacity-100"
+        >
+          <MessageCircle className="h-4 w-4" strokeWidth={0.9} />
+          <span className="mt-[0.9]">( {commentCount} )</span>
+        </div>
+        <div
+          onClick={handleSharePage}
+          className="flex cursor-pointer items-center gap-1 opacity-70 hover:opacity-100"
+        >
+          <Share className="h-4 w-4" strokeWidth={0.9} />
+          <span className="mt-[0.9]">( {randomShareCount} )</span>
+        </div>
       </div>
     </div>
   )
