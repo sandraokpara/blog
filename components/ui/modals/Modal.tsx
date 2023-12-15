@@ -1,6 +1,6 @@
 "use client"
 
-import { FC } from "react"
+import { FC, useEffect, useRef } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { X } from "lucide-react"
 
@@ -13,6 +13,7 @@ interface ModalProps {
   toggleModal?: () => void
   className?: string
   bgBlur?: boolean
+  ref?: React.Ref<HTMLDivElement>
 }
 
 const Modal: FC<ModalProps> = ({
@@ -21,8 +22,33 @@ const Modal: FC<ModalProps> = ({
   toggleModal,
   bgBlur = false,
 }) => {
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        toggleModal && toggleModal()
+      }
+    }
+
+    if (bgBlur) {
+      document.addEventListener("click", handleClickOutside)
+    }
+
+    return () => {
+      if (bgBlur) {
+        document.removeEventListener("click", handleClickOutside)
+      }
+    }
+  }, [bgBlur, toggleModal])
+
   const modalElement = () => (
     <div
+      id="modal"
+      ref={modalRef}
       className={`fixed bottom-0 z-[99] min-h-[25svh] w-[100svw] ${className}`}
     >
       <div className="relative flex h-full w-full items-center justify-center">

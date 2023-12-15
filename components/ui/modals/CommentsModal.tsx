@@ -12,9 +12,6 @@ interface ModalProps {
 
 const CommentsModal = ({ children }: ModalProps) => {
   const pathname = usePathname()
-  // console.log(pathname)
-  const slug = pathname.replace("/post/", "")
-  // console.log(slug)
   const isPostPage = pathname.startsWith("/post")
   const [isModalOpen, setIsModalOpen] = useState(false)
 

@@ -57,10 +57,10 @@ const Newsletter = () => {
         description: "Thanks for subscribing!",
       })
       startTransition(() => {
-        router.push(`/blog`);
+        router.push(`/blog`)
         router.refresh()
       })
-    }
+    },
   })
 
   return (
@@ -78,11 +78,10 @@ const Newsletter = () => {
               isNewsletterPage ? "text-2xl lg:text-3xl" : ""
             }`}
           >
-            This newsletter is a record of my journey as a writer, creator,
-            photographer, youtuber, and a proud Nigerian Igbo woman. Delivered
-            right to your inbox.
+            {isNewsletterPage
+              ? "This newsletter is a record of my journey as a writer, creator, photographer, youtuber, and a proud Nigerian Igbo woman. Subscribe to stay updated on new blogposts and events, I don't spam!"
+              : "Subscribe to my newsletter to stay updated on new blogposts and events, I don't spam!"}
           </p>
-
           <div>
             <FormField
               control={form.control}
