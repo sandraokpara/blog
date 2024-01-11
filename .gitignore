@@ -8,6 +8,7 @@ node_modules
 # ide
 .vscode/
 .codesandbox/
+.devcontainer/
 
 # testing
 coverage
