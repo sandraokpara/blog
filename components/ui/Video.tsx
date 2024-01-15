@@ -10,11 +10,11 @@ interface VideoProps {
 }
 
 const Video: FC<VideoProps> = ({
-  src,
   poster,
   fallbackSrc,
   title,
   className,
+  src: [mp4Src, webmSrc, ogvSrc],
 }) => {
   return (
     <>
@@ -26,9 +26,9 @@ const Video: FC<VideoProps> = ({
         className={`${className} hidden object-contain object-center md:flex`}
         poster={poster?.sm}
       >
-        <source src={`${src}/sm.mp4`} type="video/mp4" />
-        <source src={`${src}/sm.webm`} type="video/webm" />
-        <source src={`${src}/sm.ogg`} type="video/ogg" />
+        <source src={`${mp4Src}`} type="video/mp4" />
+        <source src={`${webmSrc}`} type="video/webm" />
+        <source src={`${ogvSrc}`} type="video/ogg" />
       </video>
       <Image
         src={fallbackSrc}
