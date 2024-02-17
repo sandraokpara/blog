@@ -3,7 +3,8 @@ import { getFeaturedPosts } from "@/lib/requests"
 import FeaturedCarousel from "@/components/ui/FeaturedCarousel"
 import { Grid } from "@/components/ui/Grid"
 
-export const dynamic = "force-dynamic"
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 const BlogPage = async ({}) => {
   const featuredPosts = await getFeaturedPosts()

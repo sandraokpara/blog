@@ -8,7 +8,8 @@ import Video from "@/components/ui/Video"
 
 const { videos, poster, title, excerpt, headline, images } = siteConfig
 
-export const dynamic = "force-dynamic"
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 export default function HomePage() {
   return (
