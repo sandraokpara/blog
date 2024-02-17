@@ -37,8 +37,8 @@ export default function RotatingText() {
         <Text primary="blog" href="/blog" index={2} />
       </div>
       <Text
-        primary="gallery"
-        href="https://www.instagram.com/sandyclopedia"
+         primary="youtube"
+         href="https://youtube.com/@SandraOkpara"
         index={3}
       />
     </div>
