@@ -11,19 +11,22 @@ import { formatTimeToNow, getRandomNumber } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
 
 import UserAvatar from "../UserAvatar"
-import CreateComment from "./CreateComment"
+import CommentEditor from "./CommentEditor"
+import { useState } from "react"
 
 const { url } = siteConfig
 
 const CommentSection = ({}) => {
+  const [isEditing, setIsEditing] = useState(false)
   const pathname = usePathname()
   const slug = pathname.replace("/post/", "")
 
   const { data, isPending } = useQuery({
     queryFn: async () => {
-      const { data } = await axios.get(`/api/comments/get?slug=${slug}`)
-      return data as PostComments
-    },
+      const { data } = await getComments()
+      return data
+    }
+,
     queryKey: ["comments", slug],
   })
 
@@ -43,10 +46,10 @@ const CommentSection = ({}) => {
           ? `Responses (${commentCount})`
           : "Be the first to post"}
       </h1>
-      <CreateComment slug={slug} />
+      <CommentEditor postSlug={slug} commentId={selectedCommentId} commentText={selectedCommentText} isEditing={isEditing} setIsEditing={setIsEditing} />
       <div className="min-w-[80svw] pt-4 lg:min-w-[45svw]">
         {data?.comments?.map((comment, index) => (
-          <div className="space-y-3 border-t py-8" key={index}>
+          !isEditing && ( <div className="space-y-3 border-t py-8" key={index}>
             <div className="flex items-center gap-3">
               <UserAvatar user={comment.author} />
               <div>
@@ -57,7 +60,7 @@ const CommentSection = ({}) => {
               </div>
             </div>
             <p className="">{comment.text}</p>
-          </div>
+          </div>)
         ))}
       </div>
     </div>

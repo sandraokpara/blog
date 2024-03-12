@@ -1,6 +1,6 @@
 "use client"
 
-import { startTransition } from "react"
+import { Dispatch, SetStateAction, startTransition, useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
@@ -15,40 +15,44 @@ import { toast } from "@/hooks/use-toast"
 import { Button } from "../Button"
 import { Form, FormControl, FormField, FormItem } from "../Form"
 import { Textarea } from "../Textarea"
+import { CreateCommentRequestValidator, UpdateCommentRequestValidator } from "@/types/validators"
 
-interface CreateCommentProps {
-  slug: string
+interface CommentEditorProps {
+  postSlug: string
+  commentText?: string
+  commentId?: string
+  isEditing: boolean
+  setIsEditing: Dispatch<SetStateAction<boolean>>
 }
 
-const CreateComment = ({ slug }: CreateCommentProps) => {
+const CommentEditor = ({ postSlug, commentText, isEditing, setIsEditing, commentId }: CommentEditorProps) => {
   const router = useRouter()
+  const apiRoute = isEditing ? "edit" : "create"
   const { loginToast } = useCustomToast()
   const { data: session } = useSession()
-  const CommentValidator = z.object({
-    slug: z.string(),
-    text: z
-      .string()
-      .min(3, {
-        message: "Comment must be at least 3 characters.",
-      })
-      .max(150, {
-        message: "Comment must be less than 150 characters.",
-      }),
-    authorId: z.string(),
-  })
 
-  const form = useForm<z.infer<typeof CommentValidator>>({
-    resolver: zodResolver(CommentValidator),
+  const creatingForm = useForm<z.infer<typeof CreateCommentRequestValidator>>({
+    resolver: zodResolver(CreateCommentRequestValidator),
     defaultValues: {
-      slug,
-      text: "",
-      authorId: session?.user?.id || "",
+text: commentText ?? "",
+blogUserEmail: session?.user?.email ?? "",
+postSlug,
     },
   })
 
+  const editingForm = useForm<z.infer<typeof UpdateCommentRequestValidator>>({
+    resolver: zodResolver(UpdateCommentRequestValidator),
+    defaultValues: {
+text: commentText ?? "",
+commentId: commentId ?? "",
+    },
+  })
+
+  const [form, setForm] = useState(creatingForm)
+
   const { mutate: postComment, isPending } = useMutation({
-    mutationFn: async (payload: z.infer<typeof CommentValidator>) => {
-      const { data } = await axios.patch(`/api/comments/post`, payload)
+    mutationFn: async (payload: z.infer<typeof CreateCommentRequestValidator>) => {
+      const { data } = await axios.patch(`/api/comments/${apiRoute}`, payload)
       return data
     },
     onError: (err) => {
@@ -70,6 +74,9 @@ const CreateComment = ({ slug }: CreateCommentProps) => {
         toast({
           description: "Your comment was posted!",
         })
+        if (isEditing) {
+          setIsEditing(false)
+        }
         router.refresh()
       })
     },
@@ -112,4 +119,4 @@ const CreateComment = ({ slug }: CreateCommentProps) => {
   )
 }
 
-export default CreateComment
+export default CommentEditor

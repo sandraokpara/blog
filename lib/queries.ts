@@ -102,3 +102,21 @@ export const querySinglePost = `query SinglePost($slug: String!) {
       isFeatured
     }
   }`
+
+  // /blog/post/[slug]
+  export const queryComments = `query Comments($slug: String!) {
+    comments(where: {post: {slug: $slug}}) {
+      id
+      text
+      createdAt
+      post {
+        id
+      }
+      blogUser {
+        id
+        name
+        email
+        image
+      }
+    }
+  }`
