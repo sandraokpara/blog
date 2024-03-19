@@ -1,17 +1,17 @@
 import { siteConfig } from "@/config/site"
 import { getFeaturedPosts } from "@/lib/requests"
-import FeaturedCarousel from "@/components/ui/FeaturedCarousel"
-import { Grid } from "@/components/ui/Grid"
+import { Grid } from "@/components/common/Grid"
+import FeaturedCarouselSection from "@/components/sections/FeaturedCarouselSection"
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+export const dynamic = "force-dynamic"
+export const fetchCache = "force-no-store"
 
 const BlogPage = async ({}) => {
   const featuredPosts = await getFeaturedPosts()
 
   return (
     <div>
-      <FeaturedCarousel posts={featuredPosts} />
+      <FeaturedCarouselSection posts={featuredPosts} />
       {/* @ts-expect-error */}
       <Grid />
     </div>

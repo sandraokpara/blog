@@ -3,14 +3,20 @@
 import React, { FC } from "react"
 import Link from "next/link"
 import { LogIn } from "lucide-react"
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 
 import { siteConfig } from "@/config/site"
 import { socialLinks } from "@/lib/social"
 import { useDate } from "@/hooks/use-date"
-import { buttonVariants } from "@/components/ui/Button"
+import { buttonVariants } from "@/components/common/Button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/common/DropDownMenu"
 
-import UserAuthNav from "../ui/UserAuthNav"
+import UserAvatar from "../common/UserAvatar"
 import { ThemeToggle } from "./ThemeToggle"
 
 const { title } = siteConfig
@@ -51,7 +57,34 @@ const Footer: FC<FooterProps> = () => {
         <p>&#169; {+year + ` ${title} • All rights reserved`}</p>
         <p className="i-no-go-hide-you-ke">
           {stanqUser ? (
-            <UserAuthNav gUser={stanqUser} />
+            <div
+              className={buttonVariants(isMagnetic)({
+                size: "icon",
+                variant: "ghost",
+              })}
+            >
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <UserAvatar
+                    className="h-5 w-5"
+                    user={{
+                      name: stanqUser?.name || null,
+                      image: stanqUser?.image || null,
+                    }}
+                  />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      signOut()
+                    }}
+                    className="cursor-pointer"
+                  >
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           ) : (
             <Link href="/sign-in">
               <div

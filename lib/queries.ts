@@ -1,3 +1,14 @@
+export const queryBlogUser = `query BlogUserQuery($email: String!) {
+  blogUser(where: {email: $email}){
+    id
+    name
+    email
+    username
+    image
+    isSubscribed
+  }
+}`
+
 // /home
 export const queryFeaturedPosts = `query FeaturedPostsQuery {
   posts(where: {isFeatured: true} ) {
@@ -103,20 +114,3 @@ export const querySinglePost = `query SinglePost($slug: String!) {
     }
   }`
 
-  // /blog/post/[slug]
-  export const queryComments = `query Comments($slug: String!) {
-    comments(where: {post: {slug: $slug}}) {
-      id
-      text
-      createdAt
-      post {
-        id
-      }
-      blogUser {
-        id
-        name
-        email
-        image
-      }
-    }
-  }`

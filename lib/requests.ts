@@ -2,162 +2,181 @@ import {
   AllPostsType,
   CategoriesType,
   CategoryPostsType,
-  FeaturedPostsType,
-  SinglePostType,
-  NewsletterSubType,
   CommentType,
-  CreateCommentRequestType,
-  CreateCommentResponseType,
-  UpdateCommentRequestType,
-  DeleteCommentRequestType,
-  DeleteCommentResponseType,
-  UpdateCommentResponseType,
-  PublishCommentRequestType,
-  PublishCommentResponseType,
+  CreateBlogUserRequestType,
+  CreateBlogUserResponseType,
+  FeaturedPostsType,
+  PublishBlogUserRequestType,
+  PublishBlogUserResponseType,
   PublishPostRequestType,
   PublishPostResponseType,
-  PublishBlogUserRequestType,
+  SinglePostType,
   UpdateBlogUserRequestType,
   UpdateBlogUserResponseType,
-} from "@/types/validators";
+} from "@/types/validators"
 
 import {
+  createBlogUser,
+  publishBlogUserByEmail,
+  publishBlogUserById,
+  publishPost,
+  updateBlogUser,
+} from "./mutations"
+import {
   queryAllPosts,
+  queryBlogUser,
   queryCategories,
   queryCategoryPosts,
   queryFeaturedPosts,
   querySinglePost,
-} from "./queries";
+} from "./queries"
 
-import {
-  createComment,
-  updateComment,
-  deleteComment,
-  publishComment,
-  publishPost,
-  createBlogUser,
-  updateBlogUser,
-  publishBlogUser,
-} from "./mutations"
-
-async function request(query: string, variables?: Record<string, any>) {
-  const hygraphEndpoint = process.env.HYGRAPH_ENDPOINT;
+export async function request(query: string, variables?: Record<string, any>) {
+  const hygraphEndpoint = process.env.HYGRAPH_ENDPOINT
+  const hygraphToken = process.env.HYGRAPH_TOKEN
 
   if (!hygraphEndpoint) {
-    throw new Error("HYGRAPH_ENDPOINT is not defined");
+    throw new Error("HYGRAPH_ENDPOINT is not defined")
   }
 
-  const requestBody = { query, variables: variables || {} };
+  if (!hygraphToken) {
+    throw new Error("HYGRAPH_TOKEN is not defined")
+  }
 
-  const response = await fetch(hygraphEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestBody),
-  });
+  const requestBody = { query, variables: variables || {} }
 
-  return response.json();
+  try {
+    const response = await fetch(hygraphEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${hygraphToken}`,
+      },
+      body: JSON.stringify(requestBody),
+    })
+
+    return response.json()
+  } catch (error: any) {
+    throw new Error(`Request failed: ${error.message}`)
+  }
 }
 
+// queries
+
 export async function getPosts(slug?: string) {
-  const query = slug ? querySinglePost : queryAllPosts;
-  const variables = slug ? { slug } : {};
+  const query = slug ? querySinglePost : queryAllPosts
+  const variables = slug ? { slug } : {}
 
-  const result = await request(query, variables);
+  try {
+    const result = await request(query, variables)
 
-  if (slug) {
-    return result?.data?.post as SinglePostType;
-  } else {
-    return result?.data?.posts as AllPostsType[];
+    if (slug) {
+      return result?.data?.post as SinglePostType
+    } else {
+      return result?.data?.posts as AllPostsType[]
+    }
+  } catch (error: any) {
+    throw new Error(`Failed to get posts: ${error.message}`)
   }
 }
 
 export async function getFeaturedPosts() {
-  const query = queryFeaturedPosts;
-  const variables = {};
+  const query = queryFeaturedPosts
+  const variables = {}
 
-  const result = await request(query, variables);
-  return result?.data?.posts as FeaturedPostsType[];
+  try {
+    const result = await request(query, variables)
+    return result?.data?.posts as FeaturedPostsType[]
+  } catch (error: any) {
+    throw new Error(`Failed to get featured posts: ${error.message}`)
+  }
 }
 
 export async function getCategoryPosts(categoryId?: string) {
-  const query = categoryId ? queryCategoryPosts : queryAllPosts;
-  const variables = categoryId ? { categoryId } : {};
+  const query = categoryId ? queryCategoryPosts : queryAllPosts
+  const variables = categoryId ? { categoryId } : {}
 
-  const result = await request(query, variables);
+  try {
+    const result = await request(query, variables)
 
-  if (categoryId) {
-    return result?.data?.posts as CategoryPostsType[];
-  } else {
-    return result?.data?.posts as AllPostsType[];
+    if (categoryId) {
+      return result?.data?.posts as CategoryPostsType[]
+    } else {
+      return result?.data?.posts as AllPostsType[]
+    }
+  } catch (error: any) {
+    throw new Error(`Failed to get category posts: ${error.message}`)
   }
 }
 
 export async function getCategories() {
-  const query = queryCategories;
-  const variables = {};
+  const query = queryCategories
+  const variables = {}
 
-  const result = await request(query, variables);
-  return result?.data?.categories as CategoriesType[];
+  try {
+    const result = await request(query, variables)
+    return result?.data?.categories as CategoriesType[]
+  } catch (error: any) {
+    throw new Error(`Failed to get categories: ${error.message}`)
+  }
 }
 
-ex[o]
+export async function getBlogUserByEmail(email: string | null | undefined) {
+  const query = queryBlogUser
+  const variables = email ? { email } : {}
 
-// Mutations
-
-export async function createNewComment(variables: CreateCommentRequestType) {
-  const query = createComment;
-
-  const result = await request(query, variables);
-  return result?.data?.createComment as CreateCommentResponseType;
-}
-
-export async function updateExistingComment(variables: UpdateCommentRequestType) {
-  const query = updateComment;
-
-  const result = await request(query, variables);
-  return result?.data?.updateComment as UpdateCommentResponseType;
-}
-
-export async function deleteCommentById(variables: DeleteCommentRequestType) {
-  const query = deleteComment;
-
-  const result = await request(query, variables);
-  return result?.data?.deleteComment as DeleteCommentResponseType;
-}
-
-export async function publishCommentById(variables: PublishCommentRequestType) {
-  const query = publishComment;
-
-  const result = await request(query, variables);
-  return result?.data?.publishComment as PublishCommentResponseType;
+  try {
+    const result = await request(query, variables)
+    return result?.data?.blogUser as CreateBlogUserResponseType
+  } catch (error: any) {
+    throw new Error(`Failed to get blog user by email: ${error.message}`)
+  }
 }
 
 export async function publishPostById(variables: PublishPostRequestType) {
-  const query = publishPost;
+  const query = publishPost
 
-  const result = await request(query, variables);
-  return result?.data?.publishPost as PublishPostResponseType;
+  try {
+    const result = await request(query, variables)
+    return result?.data?.publishPost as PublishPostResponseType
+  } catch (error: any) {
+    throw new Error(`Failed to publish post by ID: ${error.message}`)
+  }
 }
 
-export async function createNewBlogUser(variables: ) {
-  const query = createBlogUser;
+export async function createNewBlogUser(variables: CreateBlogUserRequestType) {
+  const query = createBlogUser
 
-  const result = await request(query, variables);
-  return result?.data?.createBlogUser as NewsletterSubType;
+  try {
+    const result = await request(query, variables)
+    return result?.data?.createBlogUser as CreateBlogUserResponseType
+  } catch (error: any) {
+    throw new Error(`Failed to create new blog user: ${error.message}`)
+  }
 }
 
-export async function updateBlogUserEmailById(variables: UpdateBlogUserRequestType) {
-  const query = updateBlogUser;
+export async function updateBlogUserSubscriptionByEmail(
+  variables: UpdateBlogUserRequestType
+) {
+  const query = updateBlogUser
 
-  const result = await request(query, variables);
-  return result?.data?.updateBlogUser as UpdateBlogUserResponseType;
+  try {
+    const result = await request(query, variables)
+    return result?.data?.updateBlogUser as UpdateBlogUserResponseType
+  } catch (error: any) {
+    throw new Error(
+      `Failed to update blog user subscription by email: ${error.message}`
+    )
+  }
 }
 
-export async function publishBlogUserById(variables: PublishBlogUserRequestType) {
-  const query = publishBlogUser;
+export async function publishBlogUser(variables: PublishBlogUserRequestType) {
+  const query = publishBlogUserByEmail || publishBlogUserById
 
-  const result = await request(query, variables);
-  return result?.data?.publishBlogUser as PublishCommentResponseType;
+  try {
+    const result = await request(query, variables)
+    return result?.data?.publishBlogUser as PublishBlogUserResponseType
+  } catch (error: any) {
+    throw new Error(`Failed to publish blog user: ${error.message}`)
+  }
 }

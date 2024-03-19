@@ -1,12 +1,14 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { nanoid } from "nanoid"
 import { NextAuthOptions, getServerSession } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
-import { db } from "./db"
+import {
+  createNewBlogUser,
+  getBlogUserByEmail,
+  publishBlogUser,
+} from "./requests"
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
   session: {
     strategy: "jwt",
   },
@@ -27,40 +29,22 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email
         session.user.username = token.username
         session.user.image = token?.picture
+
+        const dbUser = await getBlogUserByEmail(token?.email)
+        if (!dbUser) {
+          const variables = {
+            name: token.name ?? "",
+            email: token.email ?? "",
+            username: nanoid(10),
+            image: token.picture ?? "",
+            isSubscribed: false,
+          }
+          const newDbUser = await createNewBlogUser(variables)
+          await publishBlogUser({ email: newDbUser?.email })
+        }
       }
 
       return session
-    },
-    async jwt({ token, user }) {
-      const dbUser = await db.user.findFirst({
-        where: {
-          email: token.email,
-        },
-      })
-
-      if (!dbUser) {
-        token.id = user!.id
-        return token
-      }
-
-      if (!dbUser.username) {
-        await db.user.update({
-          where: {
-            id: dbUser.id,
-          },
-          data: {
-            username: nanoid(10),
-          },
-        })
-      }
-
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-        picture: dbUser.image,
-        username: dbUser.username,
-      }
     },
     redirect() {
       return "/blog"

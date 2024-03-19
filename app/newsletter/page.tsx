@@ -1,11 +1,11 @@
 import React, { FC } from "react"
 
-import Newsletter from "@/components/ui/Newsletter"
+import Newsletter from "@/components/common/Newsletter"
 
 interface NewsletterPageProps {}
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+export const dynamic = "force-dynamic"
+export const fetchCache = "force-no-store"
 
 const NewsletterPage: FC<NewsletterPageProps> = ({}) => {
   return (
