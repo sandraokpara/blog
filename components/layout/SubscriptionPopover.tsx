@@ -9,15 +9,15 @@ interface SubscriptionPopoverProps {}
 
 const SubscriptionPopover: FC<SubscriptionPopoverProps> = ({}) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(true)
-  return (
-    isPopoverOpen && (
-      <Dialog
-        variant="popover"
-        toggleDialog={() => setIsPopoverOpen(!isPopoverOpen)}
-      >
-        <Newsletter />
-      </Dialog>
-    )
+  return isPopoverOpen ? (
+    <Dialog
+      variant="popover"
+      toggleDialog={() => setIsPopoverOpen(!isPopoverOpen)}
+    >
+      <Newsletter />
+    </Dialog>
+  ) : (
+    <></>
   )
 }
 
