@@ -18,7 +18,7 @@ const SignInSection: FC<SignInSectionProps> = ({}) => {
       <div className="space-y-3 rounded-md border-[#333] p-7 text-center shadow dark:border md:p-8 lg:p-9 xl:p-10">
         <Icons.logo />
         <h1 className="text-2xl font-semibold tracking-tight">
-          Sign in to {siteConfig.title}
+          Sign in to {siteConfig.title}&apos;s blog
         </h1>
         <Button
           className="w-full"
