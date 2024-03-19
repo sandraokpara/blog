@@ -1,16 +1,13 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import Providers from "@/providers"
 
 import { siteConfig } from "@/config/site"
 import { GeistSans } from "@/lib/fonts"
-import Newsletter from "@/components/ui/Newsletter"
-import { CommentSection } from "@/components/ui/comments/CommentSection"
-import CommentsModal from "@/components/ui/modals/CommentsModal"
-import NewsletterModal from "@/components/ui/modals/NewsletterModal"
+import { cn } from "@/lib/utils"
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/Header"
-import Providers from "@/components/layout/Providers"
-import { Toaster } from "@/components/layout/Toaster"
+import LayoutClient from "@/components/layout/LayoutClient"
 
 const { description, title, images, siteName, creator, url } = siteConfig
 
@@ -23,28 +20,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className={GeistSans.className}>
+        <body
+          className={cn(
+            GeistSans.className,
+            "relative flex min-h-[100svh] flex-col bg-background"
+          )}
+        >
           <Providers>
-            <div className="relative flex min-h-[100svh] flex-col bg-background">
-              {/* @ts-expect-error */}
-              <Header />
-
-              <div className="mt-24 px-6 md:mt-12 md:px-12 lg:mt-6 lg:px-32">
-                {children}
-              </div>
-
-              <CommentsModal>
-                <CommentSection />
-              </CommentsModal>
-              <Footer />
-
-              {/* @ts-expect-error */}
-              <NewsletterModal>
-                <Newsletter />
-              </NewsletterModal>
-
-              <Toaster />
-            </div>
+            {/* @ts-expect-error */}
+            <Header />
+            <LayoutClient>{children}</LayoutClient>
+            <Footer />
           </Providers>
         </body>
       </html>

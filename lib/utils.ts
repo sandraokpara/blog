@@ -64,7 +64,6 @@ export const splitTitle = (input: string): SplitTitle => {
   const lastSpaceIndex = input.lastIndexOf(" ")
 
   if (lastSpaceIndex === -1) {
-    // If there is no space, return the entire string as title1 and an empty string as title2
     return { title1: input, title2: "" }
   }
 

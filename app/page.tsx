@@ -2,13 +2,14 @@ import React from "react"
 import Image from "next/image"
 
 import { siteConfig } from "@/config/site"
-import FeaturedWork from "@/components/ui/FeaturedWork"
-import RotatingText from "@/components/ui/RotatingText"
-import Video from "@/components/ui/Video"
+import Video from "@/components/common/Video"
+import FeaturedWorkSection from "@/components/sections/FeaturedWorkSection"
+import RotatingTextSection from "@/components/sections/RotatingTextSection"
 
 const { videos, poster, title, excerpt, headline, images } = siteConfig
 
 export const dynamic = "force-dynamic"
+export const fetchCache = "force-no-store"
 
 export default function HomePage() {
   return (
@@ -31,7 +32,7 @@ export default function HomePage() {
               <p className="text-sm">{excerpt}</p>
             </div>
           </div>
-          <RotatingText />
+          <RotatingTextSection />
         </div>
         <div className="col-span-2 space-y-2 lg:col-span-1 lg:mr-16">
           <p className="flex justify-end text-sm">
@@ -53,7 +54,7 @@ export default function HomePage() {
       </section>
 
       {/* @ts-expect-error */}
-      <FeaturedWork />
+      <FeaturedWorkSection />
     </div>
   )
 }

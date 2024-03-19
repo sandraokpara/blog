@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -78,11 +78,11 @@
   }
 }
 
-body::-webkit-scrollbar {
+html::-webkit-scrollbar {
   display: none;
 }
 
-body {
+html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -109,19 +109,19 @@ section {
   font-family: "Abyssinica SIL", serif;
 }
 
-#comment-section {
+.custom-scrollbar {
   scrollbar-width: none !important;
 }
 
-#comment-section::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar {
   width: 6.5px !important;
 }
 
-#comment-section::-webkit-scrollbar-track {
+.custom-scrollbar::-webkit-scrollbar-track {
   display: none !important;
 }
 
-#comment-section::-webkit-scrollbar-thumb {
+.custom-scrollbar::-webkit-scrollbar-thumb {
   background: black !important;
   border-radius: 6.5px !important;
 }
