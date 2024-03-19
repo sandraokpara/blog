@@ -2,7 +2,6 @@ import {
   AllPostsType,
   CategoriesType,
   CategoryPostsType,
-  CommentType,
   CreateBlogUserRequestType,
   CreateBlogUserResponseType,
   FeaturedPostsType,
