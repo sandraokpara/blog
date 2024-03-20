@@ -27,7 +27,7 @@ function RotatingText({ primary, href, index }: TextProps) {
 
 export default function RotatingTextSection() {
   return (
-    <section className={styles.body}>
+    <div className={styles.body}>
       <RotatingText
         primary="podcast"
         href="https://open.spotify.com/show/4LuvyMi6lg6HURDxXwDN6t"
@@ -41,6 +41,6 @@ export default function RotatingTextSection() {
         href="https://youtube.com/@SandraOkpara"
         index={3}
       />
-    </section>
+    </div>
   )
 }
